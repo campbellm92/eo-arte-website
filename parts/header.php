@@ -12,7 +12,7 @@
 <body>
 
     <header>
-        <a href="" class="">Title</a>
+        <a href="" class=""></a>
         <nav>
             <?php ?>
         </nav>
