@@ -23,3 +23,25 @@
 body {
     background-color: var(--color-gray);
 }
+
+/* styles for navbar change-on-scroll */
+#main-nav {
+    transition: background-color 0.5s ease;
+}
+
+#main-nav.main-nav-scrolled {
+    background-color: var(--color-blue);
+}
+
+#site-title {
+    transition: color 0.5s ease;
+}
+
+#site-title.site-title-scrolled {
+    color: var(--color-gray);
+}
+
+.nav-links.links-default {
+    background-color: var(--color-gray);
+    color: var(--color-blue);
+}
