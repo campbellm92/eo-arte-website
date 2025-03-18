@@ -10,9 +10,9 @@
 </head>
 
 <body>
-    <header class="bg-gray">
-        <nav class="flex justify-between items-center w-full p-4 sticky top-0">
-            <a href="/" class="text-blue font-semibold">spazio eo</a>
+    <header>
+        <nav class="flex justify-between items-center w-full bg-gray p-4 fixed top-0" id="main-nav">
+            <a href="/" class="text-blue font-semibold" id="site-title">spazio eo</a>
             <ul class="flex justify-end space-x-4">
                 <?php
                 $pages = array("/", "/about", "/eventi", "/corsi", "/contattateci");
@@ -20,27 +20,33 @@
                 $style = "text-gray font-semibold bg-blue px-3 rounded-xs";
                 foreach ($page_names as $index => $page_name) {
                     $href = $pages[$index];
-                    echo "<li class='$style' id='navlinks'><a href=$href>$page_name</a></li>";
+                    echo "<li class='nav-links $style'><a href=$href>$page_name</a></li>";
                 }
                 ?>
             </ul>
         </nav>
 
         <script>
-            const header = document.getElementById("main-header");
-            const navLinks = document.getElementById("navlinks");
-            const heroSection = document.getElementById("hero-section");
+            document.addEventListener("DOMContentLoaded", function () {
+                const mainNav = document.getElementById("main-nav");
+                const siteTitle = document.getElementById("site-title")
+                const navLinks = document.querySelectorAll(".nav-links");
+                const heroSection = document.getElementById("hero-section");
 
-            window.addEventListener("scroll", () => {
-                if (window.scrollY > heroSection.offsetHeight / 2) {
-                    header.classList.add("scrolled");
-                    navLinks.classList.add("links-default");
-                } else {
-                    header.classList.remove("scrolled");
-                    header.classList.remove("links-default");
-                }
+                window.addEventListener("scroll", () => {
+                    if (window.scrollY > heroSection?.offsetHeight / 1.1) {
+                        // the default or 'scrolled' styles
+                        mainNav.classList.add("main-nav-scrolled");
+                        siteTitle.classList.add("site-title-scrolled")
+                        navLinks.forEach(link => link.classList.add("links-default"));
+                    } else {
+                        // the styles at the hero section
+                        mainNav.classList.remove("main-nav-scrolled");
+                        siteTitle.classList.remove("site-title-scrolled")
+                        navLinks.forEach(link => link.classList.remove("links-default"));
+                    }
+                })
             })
-
         </script>
 
     </header>
