@@ -17,15 +17,20 @@
                 <?php
                 $pages = array("/", "/about", "/eventi", "/corsi", "/contattateci");
                 $page_names = array("home", "about", "eventi", "corsi", "contattateci");
-                $style = "text-gray font-semibold bg-blue px-3 rounded-xs";
+                $style =
+                    "text-gray font-semibold bg-blue px-3 rounded-xs hover:text-blue hover:bg-gray hover:outline hover:outline-blue transition duration-600 ease-in-out";
+                // look into styles for when page has been clicked and the user is on that page
                 foreach ($page_names as $index => $page_name) {
                     $href = $pages[$index];
-                    echo "<li class='nav-links $style'><a href=$href>$page_name</a></li>";
+                    echo "<li class='nav-links $style'><a href=$href >$page_name</a></li>";
                 }
+                // extra classes or ids here required for scripting for dynamic styling
+                // see also input.css
                 ?>
             </ul>
         </nav>
 
+        <!-- script for changing navbar color for different sections -->
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const mainNav = document.getElementById("main-nav");
