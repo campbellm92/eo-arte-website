@@ -45,3 +45,9 @@ body {
     background-color: var(--color-gray);
     color: var(--color-blue);
 }
+
+.nav-links.links-default:hover {
+    background-color: var(--color-blue);
+    color: var(--color-gray);
+    outline: 1px solid var(--color-gray);
+}
