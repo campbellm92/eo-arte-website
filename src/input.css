@@ -27,10 +27,26 @@ body {
 
 h1 {
     font-size: clamp(4rem, 4vw, 8rem);
+    font-weight: bolder;
+}
+
+h2 {
+    font-size: clamp(3rem, 3vw, 7rem);
+    font-weight: bolder;
 }
 
 p {
     font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.btn {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+
 }
 
 /* styles for navbar change-on-scroll */
@@ -61,7 +77,8 @@ p {
     outline: 1px solid var(--color-gray);
 }
 
+/* Events section */
 
-/* .about-container {
-    width: clamp(25rem, 50vw, 48rem);
-} */
+.card-time-date {
+    font-size: clamp(0.8rem, 2vw, 1.3rem);
+}
