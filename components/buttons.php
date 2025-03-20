@@ -2,7 +2,7 @@
 
 class Button
 {
-    private $button_base = "inline-block font-extrabold font-albert px-3 rounded-xs";
+    private $button_base = "inline-block font-extrabold font-albert px-3 rounded-xs text-center";
     private $text;
     private $url;
     private $type = 'primary';
@@ -39,9 +39,9 @@ class Button
         $styles = [
             // note: btn classname used for clamp styles (easier in pure css)
             'primary-solid' => 'btn text-gray font-semibold bg-blue hover:bg-blue-hover transition-hover duration-500 ease-in-out',
-            'primary-outline' => 'btn text-blue hover:text-gray bg-inherit hover:bg-blue border-1 border-blue transition-hover duration-500 ease-in-out',
+            'primary-outline' => 'btn text-blue hover:text-gray bg-inherit hover:bg-blue border-8 border-blue transition-hover duration-500 ease-in-out',
             'secondary-solid' => 'btn text-gray bg-red hover:bg-red-hover transition-hover duration-500 ease-in-out',
-            'secondary-outline' => 'btn text-red hover:text-gray bg-inherit hover:bg-red border-1 border-red transition-hover duration-500 ease-in-out'
+            'secondary-outline' => 'btn text-red hover:text-gray bg-inherit hover:bg-red border-8 border-red transition-hover duration-500 ease-in-out'
 
         ];
 
