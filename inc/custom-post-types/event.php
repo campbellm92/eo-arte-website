@@ -53,7 +53,7 @@ function event_meta_box_callback($post)
     ?>
     <p>
         <label for="event_date_from"><strong>Da (o solo): </strong></label><br>
-        <input type="datetime-local" name="event_date_from" id="event_date_time" value="<?php echo esc_attr($date_from); ?>"
+        <input type="datetime-local" name="event_date_from" id="event_date_from" value="<?php echo esc_attr($date_from); ?>"
             style="width:100%">
     </p>
     <p>
@@ -64,15 +64,13 @@ function event_meta_box_callback($post)
     <p>
         <input type="checkbox" name="event_date_tba" id="event_date_tba" value="1" <?php checked($tba, '1'); ?>>
         <label for="event_date_tba"><strong>Data da annunciare (TBA)</strong></label><br>
-        </?>
-
         <?php
 }
 
 function event_save_meta_boxes($post_id)
 {
     if (isset($_POST['event_date_from'])) {
-        update_post_meta($post_id, '_event_date_time', sanitize_text_field($_POST['event_date_from']));
+        update_post_meta($post_id, '_event_date_from', sanitize_text_field($_POST['event_date_from']));
     }
 
     if (isset($_POST['event_date_to'])) {
