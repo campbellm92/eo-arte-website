@@ -26,7 +26,7 @@ function register_event_post_type()
         'menu_icon' => 'dashicons-calendar',
         'show_in_rest' => true
     );
-    register_post_type('event_item', $args);
+    register_post_type('event', $args);
 }
 
 add_action('init', 'register_event_post_type');
@@ -37,7 +37,7 @@ function event_add_meta_boxes()
         "event_details",
         'Dettagli sull\'evento',
         'event_meta_box_callback',
-        'event_item',
+        'event',
         'normal',
         'high'
     );
@@ -63,8 +63,9 @@ function event_meta_box_callback($post)
     </p>
     <p>
         <input type="checkbox" name="event_date_tba" id="event_date_tba" value="1" <?php checked($tba, '1'); ?>>
-        <label for="event_date_tba"><strong>Data da annunciare (TBA)</strong></label><br>
-        <?php
+        <label for="event_date_tba"><strong>Data da annunciare (TBA)</strong></label>
+    </p>
+    <?php
 }
 
 function event_save_meta_boxes($post_id)
