@@ -12,11 +12,12 @@ $events = new WP_Query($args);
 ?>
 
 <section class="min-h-screen">
-    <div class="bg-blue min-h-screen my-10 p-4 rounded-xs">
 
-        <h1 class="text-red pb-6">EVENTI</h1>
+    <div class="bg-blue min-h-screen w-full my-10 p-4 rounded-xs">
 
-        <div class="cards-container grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 gap-4 pb-6">
+        <h1 class="text-red pb-6">PROSSIMI EVENTI</h1>
+
+        <div class="cards-container flex overflow-x-auto space-x-4 snap-x pb-6 scrollbar-hide">
             <?php if ($events->have_posts()):
                 while ($events->have_posts()):
                     $events->the_post(); ?>
@@ -25,9 +26,14 @@ $events = new WP_Query($args);
                     $event_date_to = get_post_meta(get_the_ID(), '_event_date_to', true);
                     $event_date_tba = get_post_meta(get_the_ID(), '_event_date_tba', true);
                     ?>
-                    <div class="card flex flex-col bg-gray max-w-xl border-8 border-red rounded-xs">
-                        <div class="px-6 pt-6">
-                            <?php the_post_thumbnail() ?>
+                    <div
+                        class="card flex flex-col flex-shrink-0 w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2 h-auto bg-gray border-8 border-red rounded-xs snap-start">
+                        <div class="flex-shrink-0">
+                            <?php if (has_post_thumbnail()): ?>
+                                <div class="h-full">
+                                    <?php the_post_thumbnail() ?>
+                                <?php endif ?>
+                            </div>
                         </div>
                         <div class="card-content flex flex-col flex-grow p-6">
                             <h2 class="card-event-title text-blue"><?php the_title(); ?></h2>
