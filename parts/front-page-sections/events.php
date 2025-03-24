@@ -1,5 +1,6 @@
 <!-- events section -->
 <?php
+// custom WP query
 $args = [
     'post_type' => 'event',
     'posts_per_page' => 3,
@@ -12,12 +13,18 @@ $events = new WP_Query($args);
 ?>
 
 <section class="min-h-screen">
+    <div class="bg-blue min-h-screen w-full py-10 px-4">
 
-    <div class="bg-blue min-h-screen w-full my-10 p-4 rounded-xs">
+        <div class="flex flex-row justify-between items-center pb-6">
+            <h1 class="text-red">PROSSIMI EVENTI</h1>
+            <div class="mr-6">
+                <!-- CHANGE URL TO GO TO ALL EVENTS PAGE -->
+                <?php echo (new Button('TUTTI', get_permalink()))->type('neutral')->variant('outline')->addClass('')->render(); ?>
+            </div>
+        </div>
 
-        <h1 class="text-red pb-6">PROSSIMI EVENTI</h1>
 
-        <div class="cards-container flex overflow-x-auto space-x-4 snap-x pb-6 scrollbar-hide">
+        <div class="cards-container flex overflow-x-auto space-x-4 snap-x-4 pb-6 scrollbar-hide">
             <?php if ($events->have_posts()):
                 while ($events->have_posts()):
                     $events->the_post(); ?>
@@ -27,7 +34,7 @@ $events = new WP_Query($args);
                     $event_date_tba = get_post_meta(get_the_ID(), '_event_date_tba', true);
                     ?>
                     <div
-                        class="card flex flex-col flex-shrink-0 w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2 h-auto bg-gray border-8 border-red rounded-xs snap-start">
+                        class="card flex flex-col flex-shrink-0 w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2 h-auto mr-10 bg-gray border-8 border-red rounded-xs snap-start">
                         <div class="flex-shrink-0">
                             <?php if (has_post_thumbnail()): ?>
                                 <div class="h-full">
@@ -58,8 +65,6 @@ $events = new WP_Query($args);
                     </div>
                 <?php endwhile; endif; ?>
         </div>
-
-
     </div>
 
 </section>
