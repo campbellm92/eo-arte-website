@@ -13,6 +13,7 @@
     --color-red: rgb(205, 23, 25);
     --color-red-hover: rgba(205, 23, 25, 0.9);
     --color-gray: rgb(248, 249, 250);
+    --color-gray-hover: rgba(248, 249, 250, 0.9);
     --color-dark-gray: rgb(13, 15, 18);
 
     /* custom properties */
