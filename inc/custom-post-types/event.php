@@ -62,8 +62,9 @@ function event_meta_box_callback($post)
             style="width:100%">
     </p>
     <p>
+        <label for="event_date_tba"><strong>Data da annunciare (TBA)(Spunta la casella)</strong></label>
         <input type="checkbox" name="event_date_tba" id="event_date_tba" value="1" <?php checked($tba, '1'); ?>>
-        <label for="event_date_tba"><strong>Data da annunciare (TBA)</strong></label>
+
     </p>
     <?php
 }
