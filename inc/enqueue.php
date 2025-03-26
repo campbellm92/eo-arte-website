@@ -13,11 +13,11 @@ function register_styles()
 }
 add_action('wp_enqueue_scripts', 'register_styles');
 
-// function register_scripts()
-// {
-//     // gets loaded with wp_footer() in 
-//     // don't forget to change 'filename'
-//     wp_enqueue_script('eo-main', get_template_directory_uri() . '/assets/js/filename.js', array(), '1.0');
-// }
-// add_action('wp_enqueue_scripts', 'register_scripts');
+function register_scripts()
+{
+    // gets loaded with wp_footer() in 
+    // don't forget to change 'filename'
+    wp_enqueue_script('change-nav-color', get_template_directory_uri() . '/assets/js/change-nav-color.js', array(), null, true);
+}
+add_action('wp_enqueue_scripts', 'register_scripts');
 
