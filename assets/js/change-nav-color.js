@@ -1,6 +1,9 @@
-document.addEventListener("DOMContentLoaded", function () {
+// change the color of the navbar on scroll
+
+document.addEventListener("DOMContentLoaded", () => {
   const mainNav = document.getElementById("main-nav");
   const siteTitle = document.getElementById("site-title");
+  // consider changing to use id or changing class name (not scalable as is)
   const navLinks = document.querySelectorAll(".nav-links");
   const heroSection = document.getElementById("hero-section");
 
