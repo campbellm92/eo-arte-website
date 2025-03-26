@@ -104,3 +104,15 @@ p {
 .card-event-description {
     font-size: clamp(0.75rem, 0.9vw, 0.95rem);
 } */
+
+/* Gallery section with masonry grid and slide in up animation */
+.masonry-grid {
+    column-count: 3;
+    column-gap: 2rem;
+}
+
+.masonry-grid img {
+    width: 100%;
+    display: block;
+    margin-bottom: 2rem;
+}
