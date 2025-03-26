@@ -13,6 +13,7 @@ get_template_part('parts/header');
     <?php get_template_part('parts/front-page-sections/events') ?>
     <?php get_template_part('parts/front-page-sections/photo-bg-one') ?>
     <?php get_template_part('parts/front-page-sections/courses') ?>
+    <?php get_template_part('parts/front-page-sections/gallery') ?>
 </main>
 
 <?php
