@@ -1,12 +1,25 @@
-// show nav icon on window resize
-// toggle nav
+// // show nav icon on window resize
+// // toggle nav
 
-window.addEventListener("resize", () => {
-  const navLinks = document.querySelectorAll(".nav-links");
-  const viewportWidth = window.innerWidth;
-  const breakpointWidth = 700;
+// window.addEventListener("resize", () => {
+//   const viewportWidth = window.innerWidth;
+//   const breakpointWidth = 750;
+//   const mainNav = document.getElementById("main-nav");
+//   const toggleNav = document.getElementById("toggle-nav");
+//   const navLinks = document.querySelectorAll(".nav-links");
+//   const toggleMenuNavLinks = document.querySelectorAll(
+//     ".toggle-menu-nav-links"
+//   );
 
-  navLinks.forEach((link) => {
-    link.style.display = viewportWidth < breakpointWidth ? "none" : "block";
-  });
-});
+//   if (viewportWidth < breakpointWidth) {
+//     navLinks.forEach((link) => {
+//       link.style.display = "none";
+//     });
+//     toggleMenuNavLinks.forEach((link) => {
+//       link.style.display = "block";
+//     });
+//   } else {
+//     navLinks.style.display = "block";
+//     toggleMenuNavLinks.style.display = "none";
+//   }
+// });
