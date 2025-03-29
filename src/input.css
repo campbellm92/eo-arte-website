@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import "tailwindcss";
 
+
+/* custom theme config for Tailwind v4  */
 @theme {
     /* fonts */
     --font-albert: "Albert Sans", sans-serif;
@@ -26,6 +28,7 @@ body {
     overflow-x: hidden;
 }
 
+/* hide scrollbar for events and courses section on homepage */
 .scrollbar-hide {
     /* IE and Edge */
     -ms-overflow-style: none;
@@ -64,6 +67,7 @@ p {
 } */
 
 /* styles for navbar change-on-scroll */
+/* see also change-nav-color.js */
 #main-nav {
     transition: background-color 0.5s ease;
 }
@@ -79,6 +83,10 @@ p {
 #site-title.site-title-scrolled {
     color: var(--color-gray);
 }
+
+/* .nav-links {
+    display: block;
+} */
 
 .nav-links.links-default {
     background-color: var(--color-gray);
@@ -105,7 +113,9 @@ p {
     font-size: clamp(0.75rem, 0.9vw, 0.95rem);
 } */
 
-/* Gallery section with masonry grid and slide in up animation */
+
+
+/* Gallery section with masonry grid and slide in up animation(?) */
 .masonry-grid {
     column-count: 3;
     column-gap: 2rem;
