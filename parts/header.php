@@ -33,18 +33,89 @@
                     // see also input.css
                     ?>
                 </ul>
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-eo-o-blue.webp"
-                    alt="Spazio EO logo" class="sm:hidden w-7" id="toggle-icon">
+                <!-- menu toggle icon -->
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo-eo-o-blue.webp"
+                    alt="Spazio EO logo blue" class="sm:hidden w-7 cursor-pointer" id="toggle-icon"
+                    onclick="toggleNavMenu()">
             </div>
-            <div class="absolute top-full left-0 w-full bg-gray p-6 z-50 " id="mobile-menu">
+            <!-- mobile menu -->
+            <div class="absolute top-full left-0 w-full bg-gray p-6 z-50 hidden" id="mobile-menu">
                 <ul class="flex flex-col space-y-4">
                     <?php
                     foreach ($page_names as $index => $page_name) {
                         $href = $pages[$index];
-                        echo "<li><a href='$href' class='text-blue font-medium text-xl'>$page_name</a></li>";
+                        echo "<li class='mobile-menu-nav-links'><a href='$href' class='text-blue hover:text-red font-medium text-xl visited:bg-blue'>$page_name</a></li>";
                     } ?>
                 </ul>
             </div>
 
         </nav>
     </header>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mainNav = document.getElementById("main-nav");
+            const siteTitle = document.getElementById("site-title");
+            const navLinks = document.querySelectorAll(".nav-links");
+            const toggleIcon = document.getElementById("toggle-icon");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const mobileNavLinks = document.querySelectorAll("mobile-menu-nav-links");
+            const heroSection = document.getElementById("hero-section");
+            const srcForBlueIcon = "<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo-eo-o-blue.webp";
+            const srcForWhiteIcon = "<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo-eo-o-white.webp";
+
+            function changeNavColorOnScroll() {
+                if (window.scrollY > heroSection.offsetHeight / 1.1) {
+                    mainNav.classList.add("main-nav-scrolled");
+                    siteTitle.classList.add("site-title-scrolled");
+                    navLinks.forEach((link) => link.classList.add("links-default"));
+                    toggleIcon.src = srcForWhiteIcon;
+
+                } else {
+                    mainNav.classList.remove("main-nav-scrolled");
+                    siteTitle.classList.remove("site-title-scrolled");
+                    navLinks.forEach((link) => link.classList.remove("links-default"));
+                    toggleIcon.src = srcForBlueIcon;
+                }
+            }
+
+            function changeNavOnWindowResize() {
+                const windowIsSmall = window.innerWidth < 750;
+
+                if (windowIsSmall) {
+                    navLinks.forEach((link) => {
+                        link.style.display = "none";
+                    });
+                    mobileNavLinks.forEach((link) => {
+                        link.style.display = "block";
+                    });
+                    toggleIcon.style.display = "block"
+                } else {
+                    navLinks.forEach((link) => {
+                        link.style.display = "block";
+                    });
+                    mobileNavLinks.forEach((link) => {
+                        link.style.display = "none";
+                    });
+                    toggleIcon.style.display = "none"
+                }
+            }
+
+            function toggleNavMenu() {
+                const mobileMenu = document.getElementById("mobile-menu");
+                if (mobileMenu.classList.contains("hidden")) {
+                    mobileMenu.classList.remove("hidden");
+                } else {
+                    mobileMenu.classList.add("hidden");
+                }
+            }
+
+
+            changeNavColorOnScroll();
+            changeNavOnWindowResize();
+
+            window.addEventListener("scroll", changeNavColorOnScroll);
+            window.addEventListener("resize", changeNavOnWindowResize);
+            toggleIcon.addEventListener("click", toggleNavMenu);
+        });
+    </script>
