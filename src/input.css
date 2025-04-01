@@ -50,6 +50,8 @@ h1 {
 h2 {
     font-size: clamp(2rem, 2vw, 6rem);
     font-weight: bolder;
+    line-height: 0.8;
+    padding-bottom: 1rem;
 }
 
 p {
