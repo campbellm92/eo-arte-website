@@ -44,14 +44,14 @@ $events = new WP_Query($args);
                 $event_date_to = get_post_meta(get_the_ID(), '_event_date_to', true);
                 $event_date_tba = get_post_meta(get_the_ID(), '_event_date_tba', true); ?>
 
-                <div class="flex flex-col md:flex-row text-gray hover:bg-red cursor-pointer">
+                <div class="flex flex-col md:flex-row gap-4 text-gray hover:bg-red cursor-pointer border-b-4">
                     <?php if (has_post_thumbnail()): ?>
-                        <div class="rounded-xs max-w-xs">
+                        <div class="rounded-xs max-w-xs ">
                             <?php the_post_thumbnail() ?>
                         <?php endif ?>
                     </div>
-                    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center flex-1 mb-6">
-                        <h2 class="px-4 mt-6"><?php the_title(); ?></h2>
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+                        <h2 class="px-4 mt-6 "><?php the_title(); ?></h2>
                         <p class="sm:px-10">
                             <?php if ($event_date_tba == 1): ?>
                                 Da annunciare
@@ -62,8 +62,8 @@ $events = new WP_Query($args);
                                     ?>
                             <?php endif; ?>
                         </p>
-                        <div class="sm:px-10 line-clamp-1">
-                            <?php echo wpautop(get_the_content()) ?>
+                        <div class="sm:px-10 line-clamp-2">
+                            <?php echo get_the_content() ?>
                         </div>
                     </div>
                 </div>
