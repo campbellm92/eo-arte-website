@@ -1,3 +1,4 @@
+<!-- All events page, including present, upcoming and archived -->
 <?php
 if (!defined('ABSPATH'))
     exit;
@@ -7,6 +8,20 @@ if (!defined('ABSPATH'))
 <?php
 get_template_part('parts/header');
 ?>
+
+<?php
+// custom WP query
+$args = [
+    'post_type' => 'event',
+    // 'posts_per_page' => 3,
+    // 'meta_key' => '_event_date_time',
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'post_status' => 'publish'
+];
+$events = new WP_Query($args);
+?>
+
 
 <main class="bg-blue pt-[5rem] px-10">
 
@@ -18,18 +33,41 @@ get_template_part('parts/header');
         <?php echo (new Button('ARCHIVIO', '#'))->type('neutral')->variant('outline')->addClass('event-toggle-btn show-past-events')->render(); ?>
     </div>
 
+
     <!-- Current and upcoming -->
     <section class="min-h-screen">
-        <div class="flex flex-col md:flex-row text-gray hover:bg-red cursor-pointer">
-            <img src="https://placehold.co/300x200" alt="" class="rounded-xs">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center flex-1 mb-6">
-                <h2 class="px-4 line-clamp-2 mt-6">This is a loooooong event name
-                </h2>
-                <p class="sm:px-10">11.04.2025, 15:30</p>
-                <p class="sm:px-10 line-clamp-2">Excerpt of the description of the event</p>
-            </div>
+        <?php if ($events->have_posts()):
+            while ($events->have_posts()):
+                $events->the_post(); ?>
+                <?php
+                $event_date_from = get_post_meta(get_the_ID(), '_event_date_from', true);
+                $event_date_to = get_post_meta(get_the_ID(), '_event_date_to', true);
+                $event_date_tba = get_post_meta(get_the_ID(), '_event_date_tba', true); ?>
 
-        </div>
+                <div class="flex flex-col md:flex-row text-gray hover:bg-red cursor-pointer">
+                    <?php if (has_post_thumbnail()): ?>
+                        <div class="rounded-xs max-w-xs">
+                            <?php the_post_thumbnail() ?>
+                        <?php endif ?>
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center flex-1 mb-6">
+                        <h2 class="px-4 mt-6"><?php the_title(); ?></h2>
+                        <p class="sm:px-10">
+                            <?php if ($event_date_tba == 1): ?>
+                                Da annunciare
+                            <?php elseif ($event_date_from && $event_date_to): ?>
+                                <?php echo esc_html($event_date_from) . " → " . esc_html($event_date_to); ?>
+                            <?php elseif ($event_date_from):
+                                echo esc_html($event_date_from)
+                                    ?>
+                            <?php endif; ?>
+                        </p>
+                        <div class="sm:px-10 line-clamp-1">
+                            <?php echo wpautop(get_the_content()) ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; endif; ?>
 
     </section>
 
