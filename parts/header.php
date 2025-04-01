@@ -35,8 +35,7 @@
                 </ul>
                 <!-- menu toggle icon -->
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo-eo-o-blue.webp"
-                    alt="Spazio EO logo blue" class="sm:hidden w-7 cursor-pointer" id="toggle-icon"
-                    onclick="toggleNavMenu()">
+                    alt="Spazio EO logo blue" class="sm:hidden w-7 cursor-pointer" id="toggle-icon">
             </div>
             <!-- mobile menu -->
             <div class="absolute top-full left-0 w-full bg-gray p-6 z-50 hidden" id="mobile-menu">
@@ -60,24 +59,28 @@
             const toggleIcon = document.getElementById("toggle-icon");
             const mobileMenu = document.getElementById("mobile-menu");
             const mobileNavLinks = document.querySelectorAll("mobile-menu-nav-links");
-            const heroSection = document.getElementById("hero-section");
             const srcForBlueIcon = "<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo-eo-o-blue.webp";
             const srcForWhiteIcon = "<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo-eo-o-white.webp";
 
-            function changeNavColorOnScroll() {
-                if (window.scrollY > heroSection.offsetHeight / 1.1) {
-                    mainNav.classList.add("main-nav-scrolled");
-                    siteTitle.classList.add("site-title-scrolled");
-                    navLinks.forEach((link) => link.classList.add("links-default"));
-                    toggleIcon.src = srcForWhiteIcon;
+            <?php if (is_front_page()): ?>
+                const heroSection = document.getElementById("hero-section");
+                function changeNavColorOnScroll() {
+                    if (window.scrollY > heroSection.offsetHeight / 1.1) {
+                        mainNav.classList.add("main-nav-scrolled");
+                        siteTitle.classList.add("site-title-scrolled");
+                        navLinks.forEach((link) => link.classList.add("links-default"));
+                        toggleIcon.src = srcForWhiteIcon;
 
-                } else {
-                    mainNav.classList.remove("main-nav-scrolled");
-                    siteTitle.classList.remove("site-title-scrolled");
-                    navLinks.forEach((link) => link.classList.remove("links-default"));
-                    toggleIcon.src = srcForBlueIcon;
+                    } else {
+                        mainNav.classList.remove("main-nav-scrolled");
+                        siteTitle.classList.remove("site-title-scrolled");
+                        navLinks.forEach((link) => link.classList.remove("links-default"));
+                        toggleIcon.src = srcForBlueIcon;
+                    }
                 }
-            }
+                changeNavColorOnScroll();
+                window.addEventListener("scroll", changeNavColorOnScroll);
+            <?php endif; ?>
 
             function changeNavOnWindowResize() {
                 const windowIsSmall = window.innerWidth < 750;
@@ -100,6 +103,8 @@
                     toggleIcon.style.display = "none"
                 }
             }
+            changeNavOnWindowResize();
+            window.addEventListener("resize", changeNavOnWindowResize);
 
             function toggleNavMenu() {
                 const mobileMenu = document.getElementById("mobile-menu");
@@ -109,13 +114,6 @@
                     mobileMenu.classList.add("hidden");
                 }
             }
-
-
-            changeNavColorOnScroll();
-            changeNavOnWindowResize();
-
-            window.addEventListener("scroll", changeNavColorOnScroll);
-            window.addEventListener("resize", changeNavOnWindowResize);
             toggleIcon.addEventListener("click", toggleNavMenu);
         });
     </script>
