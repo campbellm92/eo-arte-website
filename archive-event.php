@@ -44,14 +44,15 @@ $events = new WP_Query($args);
                 $event_date_to = get_post_meta(get_the_ID(), '_event_date_to', true);
                 $event_date_tba = get_post_meta(get_the_ID(), '_event_date_tba', true); ?>
 
-                <div class="flex flex-col md:flex-row gap-4 text-gray hover:bg-red cursor-pointer border-b-4">
+
+                <div class="flex flex-col md:flex-row w-full gap-4 text-gray hover:bg-red cursor-pointer border-b-4 py-6">
                     <?php if (has_post_thumbnail()): ?>
-                        <div class="rounded-xs max-w-xs ">
+                        <div class="rounded-xs max-w-xs">
                             <?php the_post_thumbnail() ?>
                         <?php endif ?>
                     </div>
                     <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
-                        <h2 class="px-4 mt-6 "><?php the_title(); ?></h2>
+                        <h2 class="px-4 mt-6 shrink-0 max-w-prose"><?php the_title(); ?></h2>
                         <p class="sm:px-10">
                             <?php if ($event_date_tba == 1): ?>
                                 Da annunciare
