@@ -18,3 +18,4 @@ require_once 'inc/theme-support.php';
 
 //handlers
 require_once 'inc/img-to-webp.php';
+require_once 'inc/date-time-formatters.php';
