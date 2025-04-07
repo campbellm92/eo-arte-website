@@ -91,6 +91,14 @@ function event_save_meta_boxes($post_id)
         update_post_meta($post_id, '_event_date_to', sanitize_text_field($_POST['event_date_to']));
     }
 
+    if (isset($_POST['event_time_from'])) {
+        update_post_meta($post_id, '_event_time_from', sanitize_text_field($_POST['event_time_from']));
+    }
+
+    if (isset($_POST['event_time_to'])) {
+        update_post_meta($post_id, '_event_time_to', sanitize_text_field($_POST['event_time_to']));
+    }
+
     if (isset($_POST['event_date_tba'])) {
         update_post_meta($post_id, '_event_date_tba', 1);
     } else {
