@@ -49,16 +49,28 @@ function event_meta_box_callback($post)
 {
     $date_from = get_post_meta($post->ID, '_event_date_from', true);
     $date_to = get_post_meta($post->ID, '_event_date_to', true);
+    $time_from = get_post_meta($post->ID, '_event_time_from', true);
+    $time_to = get_post_meta($post->ID, '_event_time_to', true);
     $tba = get_post_meta($post->ID, '_event_date_tba', true);
     ?>
     <p>
-        <label for="event_date_from"><strong>Da (o solo): </strong></label><br>
-        <input type="datetime-local" name="event_date_from" id="event_date_from" value="<?php echo esc_attr($date_from); ?>"
+        <label for="event_date_from"><strong>Da (o solo questa data): </strong></label><br>
+        <input type="date" name="event_date_from" id="event_date_from" value="<?php echo esc_attr($date_from); ?>"
             style="width:100%">
     </p>
     <p>
         <label for="event_date_to"><strong>Fino a: </strong></label><br>
-        <input type="datetime-local" name="event_date_to" id="event_date_to" value="<?php echo esc_attr($date_to); ?>"
+        <input type="date" name="event_date_to" id="event_date_to" value="<?php echo esc_attr($date_to); ?>"
+            style="width:100%">
+    </p>
+    <p>
+        <label for="event_time_from"><strong>Ora (da)</strong></label><br>
+        <input type="time" name="event_time_from" id="event_time_from" value="<?php echo esc_attr($time_from); ?>"
+            style="width:100%">
+    </p>
+    <p>
+        <label for="event_time_to"><strong>Ora (fino a)</strong></label><br>
+        <input type="time" name="event_time_to" id="event_time_to" value="<?php echo esc_attr($time_to); ?>"
             style="width:100%">
     </p>
     <p>
