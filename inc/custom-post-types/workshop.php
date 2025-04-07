@@ -48,6 +48,8 @@ function workshop_meta_box_callback($post)
 {
     $date_from = get_post_meta($post->ID, '_workshop_date_from', true);
     $date_to = get_post_meta($post->ID, '_workshop_date_to', true);
+    $time_from = get_post_meta($post->ID, '_workshop_time_from', true);
+    $time_to = get_post_meta($post->ID, '_workshop_time_to', true);
     $tba = get_post_meta($post->ID, '_workshop_date_tba', true);
     $selected_days = get_post_meta($post->ID, '_workshop_days', true);
     if (!is_array($selected_days)) {
@@ -57,14 +59,25 @@ function workshop_meta_box_callback($post)
     ?>
     <p>
         <label for="workshop_date_from"><strong>Da (o solo): </strong></label><br>
-        <input type="datetime-local" name="workshop_date_from" id="workshop_date_from"
-            value="<?php echo esc_attr($date_from); ?>" style="width:100%">
+        <input type="date" name="workshop_date_from" id="workshop_date_from" value="<?php echo esc_attr($date_from); ?>"
+            style="width:100%">
     </p>
     <p>
         <label for="workshop_date_to"><strong>Fino a: </strong></label><br>
-        <input type="datetime-local" name="workshop_date_to" id="workshop_date_to" value="<?php echo esc_attr($date_to); ?>"
+        <input type="date" name="workshop_date_to" id="workshop_date_to" value="<?php echo esc_attr($date_to); ?>"
             style="width:100%">
     </p>
+    <p>
+        <label for="workshop_time_from"><strong>Ora (da)</strong></label><br>
+        <input type="time" name="workshop_time_from" id="workshop_date_from" value="<?php echo esc_attr($time_from); ?>"
+            style="width:100%">
+    </p>
+    <p>
+        <label for="workshop_time_to"><strong>Ora (fino a)</strong></label><br>
+        <input type="time" name="workshop_time_to" id="workshop_time_to" value="<?php echo esc_attr($time_to); ?>"
+            style="width:100%">
+    </p>
+
     <p>
         <input type="checkbox" name="workshop_date_tba" id="workshop_date_tba" value="1" <?php checked($tba, '1'); ?>>
         <label for="workshop_date_tba"><strong>Data da annunciare (TBA)</strong></label>
@@ -89,6 +102,14 @@ function workshop_save_meta_boxes($post_id)
 
     if (isset($_POST['workshop_date_to'])) {
         update_post_meta($post_id, '_workshop_date_to', sanitize_text_field($_POST['workshop_date_to']));
+    }
+
+    if (isset($_POST['workshop_time_from'])) {
+        update_post_meta($post_id, '_workshop_time_from', sanitize_text_field($_POST['workshop_time_from']));
+    }
+
+    if (isset($_POST['workshop_time_to'])) {
+        update_post_meta($post_id, '_workshop_time_to', sanitize_text_field($_POST['workshop_time_to']));
     }
 
     if (isset($_POST['workshop_date_tba'])) {
