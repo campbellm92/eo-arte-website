@@ -20,7 +20,7 @@ function register_workshop_post_type()
         'public' => true,
         'menu_position' => 2,
         'has_archive' => true,
-        'rewrite' => ['slug' => 'workshops'],
+        'rewrite' => ['slug' => 'workshop'],
         'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'autosave'],
         'menu_icon' => 'dashicons-welcome-learn-more',
         'show_in_rest' => true
