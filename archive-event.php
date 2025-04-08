@@ -26,9 +26,11 @@ $events = new WP_Query($args);
 <main class="bg-blue pt-[5rem]">
 
     <div class="px-5">
-        <h1 class="text-gray mb-5">EVENTI</h1>
+        <div class="text-center md:text-left">
+            <h1 class="text-gray mb-5">EVENTI</h1>
+        </div>
 
-        <div class="flex gap-5 mb-10">
+        <div class="flex justify-center md:justify-start gap-5 mb-10">
             <?php echo (new Button('ATTUALI E PROSSIMI', '#'))->type('neutral')->variant('outline')->addClass('event-toggle-btn show-present-events')->render(); ?>
             <?php echo (new Button('ARCHIVIO', '#'))->type('neutral')->variant('outline')->addClass('event-toggle-btn show-past-events')->render(); ?>
         </div>
@@ -45,8 +47,8 @@ $events = new WP_Query($args);
                 $event_date_from = get_post_meta(get_the_ID(), '_event_date_from', true);
                 $event_date_to = get_post_meta(get_the_ID(), '_event_date_to', true);
                 $event_date_tba = get_post_meta(get_the_ID(), '_event_date_tba', true); ?>
-                <div
-                    class="flex flex-col items-center md:flex-row w-full gap-4 lg:h-64 text-gray hover:bg-red cursor-pointer border-b-4">
+                <div class="flex flex-col items-center md:flex-row w-full gap-4 lg:h-64 text-gray hover:bg-red cursor-pointer border-b-4"
+                    id="events-container">
                     <?php if (has_post_thumbnail()): ?>
                         <div class="rounded-xs w-full md:w-[12.5rem] lg:w-[18.75rem] h-full overflow-hidden shrink-0">
                             <?php the_post_thumbnail('full', ['class' => 'object-cover w-full h-full']) ?>
@@ -64,7 +66,7 @@ $events = new WP_Query($args);
                                     ?>
                             <?php endif; ?>
                         </p>
-                        <div class="sm:px-10 md:w-1/3 line-clamp-3 overflow-hidden">
+                        <div class="px-4 text-center md:text-left md:w-1/3 line-clamp-3 overflow-hidden">
                             <?php echo get_the_content() ?>
                         </div>
                     </div>
@@ -76,6 +78,19 @@ $events = new WP_Query($args);
 
 
 </main>
+
+<!-- <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const buttons = document.querySelectorAll(".event-toggle-btn");
+        const container = document.getElementById("events-container");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+
+            } )
+        })
+    })
+</script> -->
 
 
 
