@@ -31,29 +31,46 @@ $events = new WP_Query($args);
                     <?php
                     $event_date_from = get_post_meta(get_the_ID(), '_event_date_from', true);
                     $event_date_to = get_post_meta(get_the_ID(), '_event_date_to', true);
+                    $event_time_from = get_post_meta(get_the_ID(), '_event_time_from', true);
+                    $event_time_to = get_post_meta(get_the_ID(), '_event_time_to', true);
                     $event_date_tba = get_post_meta(get_the_ID(), '_event_date_tba', true);
                     ?>
                     <div
                         class="card flex flex-col flex-shrink-0 w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2 h-auto mr-10 bg-gray border-8 border-red rounded-xs snap-start">
-                        <div class="flex-shrink-0">
-                            <?php if (has_post_thumbnail()): ?>
-                                <div class="h-full">
-                                    <?php the_post_thumbnail() ?>
-                                <?php endif ?>
+                        <?php if (has_post_thumbnail()): ?>
+                            <div class="flex-shrink-0">
+                                <div class="h-90 overflow-hidden">
+                                    <?php the_post_thumbnail('large', ['class' => 'w-full h-full object-cover']) ?>
+                                </div>
                             </div>
-                        </div>
+                        <?php endif ?>
                         <div class="card-content flex flex-col flex-grow p-6">
                             <h2 class="card-event-title text-blue"><?php the_title(); ?></h2>
-                            <p class="card-time-date text-red pb-2">
+                            <p class="card-time-date text-red">
                                 <?php if ($event_date_tba == 1): ?>
                                     Da annunciare
                                 <?php elseif ($event_date_from && $event_date_to): ?>
-                                    <?php echo esc_html($event_date_from) . " → " . esc_html($event_date_to); ?>
+                                    <?php echo esc_html(convert_date_format($event_date_from)) . " → " . esc_html(convert_date_format($event_date_to)); ?>
                                 <?php elseif ($event_date_from):
-                                    echo esc_html($event_date_from)
+                                    echo esc_html(convert_date_format($event_date_from))
                                         ?>
                                 <?php endif; ?>
+
                             </p>
+                            <p class="card-time-date text-red pb-2">
+                                <?php if ($event_time_from && $event_time_to): ?>
+                                    <?php echo esc_html("dalle " . convert_time_format($event_time_from)) . " alle " . esc_html(convert_time_format($event_time_to)); ?>
+                                <?php elseif ($event_time_from):
+                                    echo esc_html("dalle " . convert_time_format($event_time_from))
+                                        ?>
+                                <?php endif; ?>
+
+                            </p>
+
+                            <!-- will need to add logic for time -->
+                            <!-- copy and paste above and adjust for time -->
+
+
                             <p class="card-event-description text-blue">
                                 <!--needs a fix here - atm not making paras  -->
                                 <?php echo wpautop(get_the_content()) ?>
