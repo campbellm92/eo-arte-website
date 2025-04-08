@@ -13,12 +13,3 @@ function register_styles()
 }
 add_action('wp_enqueue_scripts', 'register_styles');
 
-// function register_scripts()
-// {
-//     // gets loaded with wp_footer() in 
-//     // don't forget to change 'filename'
-//     wp_enqueue_script('change-nav-color', get_template_directory_uri() . '/assets/js/change-nav-color.js', array(), null, true);
-//     wp_enqueue_script('change-nav-on-resize', get_template_directory_uri() . '/assets/js/change-nav-on-resize.js', array(), null, true);
-// }
-// add_action('wp_enqueue_scripts', 'register_scripts');
-
