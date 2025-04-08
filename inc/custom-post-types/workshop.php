@@ -58,6 +58,10 @@ function workshop_meta_box_callback($post)
     $days = ['lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato', 'domenica'];
     ?>
     <p>
+        <input type="checkbox" name="workshop_date_tba" id="workshop_date_tba" value="1" <?php checked($tba, '1'); ?>>
+        <label for="workshop_date_tba"><strong>Data da annunciare (TBA)</strong></label>
+    </p>
+    <p>
         <label for="workshop_date_from"><strong>Da (o solo): </strong></label><br>
         <input type="date" name="workshop_date_from" id="workshop_date_from" value="<?php echo esc_attr($date_from); ?>"
             style="width:100%">
@@ -76,11 +80,6 @@ function workshop_meta_box_callback($post)
         <label for="workshop_time_to"><strong>Ora (fino a)</strong></label><br>
         <input type="time" name="workshop_time_to" id="workshop_time_to" value="<?php echo esc_attr($time_to); ?>"
             style="width:100%">
-    </p>
-
-    <p>
-        <input type="checkbox" name="workshop_date_tba" id="workshop_date_tba" value="1" <?php checked($tba, '1'); ?>>
-        <label for="workshop_date_tba"><strong>Data da annunciare (TBA)</strong></label>
     </p>
     <p><strong>Giorni di workshop</strong>
     <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
