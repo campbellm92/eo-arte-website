@@ -15,13 +15,13 @@
 <body>
     <header>
         <!-- main nav -->
-        <nav class="flex justify-between items-center w-full bg-gray p-4 fixed top-0" id="main-nav">
+        <nav class="flex justify-between items-center max-w-screen w-full bg-gray p-4 fixed top-0" id="main-nav">
             <a href="/" class="text-blue font-semibold" id="site-title">spazio eo</a>
             <div class="flex items-center space-x-4">
                 <ul class="hidden sm:flex space-x-4">
                     <?php
-                    $pages = array("/", "/about", "/eventi", "/corsi", "/contattateci");
-                    $page_names = array("home", "about", "eventi", "corsi", "contattateci");
+                    $pages = array("/", "/about", "/eventi", "/workshop", "/contattateci");
+                    $page_names = array("home", "about", "eventi", "workshop", "contattateci");
                     $style =
                         "text-gray font-semibold bg-blue px-3 rounded-xs hover:text-blue hover:bg-gray hover:outline hover:outline-blue transition duration-600 ease-in-out";
                     // look into styles for when page has been clicked and the user is on that page
@@ -58,7 +58,7 @@
             const navLinks = document.querySelectorAll(".nav-links");
             const toggleIcon = document.getElementById("toggle-icon");
             const mobileMenu = document.getElementById("mobile-menu");
-            const mobileNavLinks = document.querySelectorAll("mobile-menu-nav-links");
+            const mobileNavLinks = document.querySelectorAll(".mobile-menu-nav-links");
             const srcForBlueIcon = "<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo-eo-o-blue.webp";
             const srcForWhiteIcon = "<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo-eo-o-white.webp";
 
