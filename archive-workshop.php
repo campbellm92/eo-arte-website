@@ -47,8 +47,8 @@ $workshops = new WP_Query($args);
                 $workshop_date_from = get_post_meta(get_the_ID(), '_event_date_from', true);
                 $workshop_date_to = get_post_meta(get_the_ID(), '_workshop_date_to', true);
                 $workshop_date_tba = get_post_meta(get_the_ID(), '_workshop_date_tba', true); ?>
-                <div class="flex flex-col items-center md:flex-row w-full gap-4 lg:h-64 text-gray hover:bg-red cursor-pointer border-b-4"
-                    id="workshops-container">
+                <div class="flex flex-col items-center md:flex-row w-full gap-4 lg:h-64 text-gray hover:bg-blue cursor-pointer border-b-4"
+                    id="workshops-container" onclick="location.href='<?php echo get_the_permalink(); ?>'">
                     <?php if (has_post_thumbnail()): ?>
                         <div class="rounded-xs w-full md:w-[12.5rem] lg:w-[18.75rem] h-full overflow-hidden shrink-0">
                             <?php the_post_thumbnail('full', ['class' => 'object-cover w-full h-full']) ?>
@@ -66,7 +66,7 @@ $workshops = new WP_Query($args);
                                     ?>
                             <?php endif; ?>
                         </p>
-                        <div class="px-4 text-red text-center md:text-left md:w-1/3 line-clamp-3 overflow-hidden">
+                        <div class="px-4 text-center md:text-left md:w-1/3 line-clamp-3 overflow-hidden">
                             <?php echo get_the_content() ?>
                         </div>
                     </div>

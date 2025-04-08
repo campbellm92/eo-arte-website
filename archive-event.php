@@ -48,7 +48,7 @@ $events = new WP_Query($args);
                 $event_date_to = get_post_meta(get_the_ID(), '_event_date_to', true);
                 $event_date_tba = get_post_meta(get_the_ID(), '_event_date_tba', true); ?>
                 <div class="flex flex-col items-center md:flex-row w-full gap-4 lg:h-64 text-gray hover:bg-red cursor-pointer border-b-4"
-                    id="events-container">
+                    id="events-container" onclick="location.href='<?php echo get_permalink(); ?>'">
                     <?php if (has_post_thumbnail()): ?>
                         <div class="rounded-xs w-full md:w-[12.5rem] lg:w-[18.75rem] h-full overflow-hidden shrink-0">
                             <?php the_post_thumbnail('full', ['class' => 'object-cover w-full h-full']) ?>
