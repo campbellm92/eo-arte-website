@@ -29,17 +29,17 @@ $workshops = new WP_Query($args);
                     $workshop_date_from = get_post_meta(get_the_ID(), '_workshop_date_from', true);
                     $workshop_date_to = get_post_meta(get_the_ID(), '_workshop_date_to', true);
                     $workshop_date_tba = get_post_meta(get_the_ID(), '_workshop_date_tba', true);
-                    $workshop_days = get_post_meta(get_the_ID(), '_workshop_days', true);
+                    // $workshop_days = get_post_meta(get_the_ID(), '_workshop_days', true);
                     ?>
                     <div
-                        class="card flex flex-col flex-shrink-0 w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2 h-auto bg-gray border-8 border-red rounded-xs snap-start">
+                        class="card flex flex-col flex-shrink-0 w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2 h-auto bg-gray border-8 border-blue rounded-xs snap-start">
                         <div class="flex-shrink-0">
-                            <div class="h-full">
+                            <div class="h-64 overflow-hidden">
                                 <?php if (has_post_thumbnail()): ?>
-                                    <?php the_post_thumbnail(); ?>
+                                    <?php the_post_thumbnail('large', ['class' => 'w-full h-full object-cover']); ?>
                                 <?php else: ?>
                                     <img src="http://spazio-eo.local/wp-content/uploads/2025/03/eo-arte-outside.webp"
-                                        alt="Immagine di default" />
+                                        alt="Immagine di default" class="w-full h-full object-cover" />
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -50,9 +50,9 @@ $workshops = new WP_Query($args);
                                 <?php if ($workshop_date_tba == 1): ?>
                                     Da annunciare
                                 <?php elseif ($workshop_date_from && $workshop_date_to): ?>
-                                    <?php echo esc_html($workshop_date_from) . " → " . esc_html($workshop_date_to); ?>
+                                    <?php echo esc_html(convert_date_format($workshop_date_from)) . " → " . esc_html(convert_date_format($workshop_date_to)); ?>
                                 <?php elseif ($workshop_date_from):
-                                    echo esc_html($workshop_date_from)
+                                    echo esc_html(convert_date_format($workshop_date_from))
                                         ?>
                                 <?php endif; ?>
                             </p>
