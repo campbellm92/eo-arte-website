@@ -28,7 +28,7 @@ $events = new WP_Query($args);
     <div class="px-5">
         <h1 class="text-gray mb-5">EVENTI</h1>
 
-        <div class="mb-10">
+        <div class="flex gap-5 mb-10">
             <?php echo (new Button('ATTUALI E PROSSIMI', '#'))->type('neutral')->variant('outline')->addClass('event-toggle-btn show-present-events')->render(); ?>
             <?php echo (new Button('ARCHIVIO', '#'))->type('neutral')->variant('outline')->addClass('event-toggle-btn show-past-events')->render(); ?>
         </div>
@@ -45,29 +45,26 @@ $events = new WP_Query($args);
                 $event_date_from = get_post_meta(get_the_ID(), '_event_date_from', true);
                 $event_date_to = get_post_meta(get_the_ID(), '_event_date_to', true);
                 $event_date_tba = get_post_meta(get_the_ID(), '_event_date_tba', true); ?>
-
-
                 <div
-                    class="flex flex-col items-center md:flex-row w-full gap-4 lg:h-64 text-gray hover:bg-red cursor-pointer border-b-4 py-6">
+                    class="flex flex-col items-center md:flex-row w-full gap-4 lg:h-64 text-gray hover:bg-red cursor-pointer border-b-4">
                     <?php if (has_post_thumbnail()): ?>
-                        <div
-                            class="rounded-xs w-full md:w-[12.5rem] md:h-[10rem] lg:w-[18.75rem] lg:h-[12.5rem] overflow-hidden shrink-0">
-                            <?php the_post_thumbnail() ?>
+                        <div class="rounded-xs w-full md:w-[12.5rem] lg:w-[18.75rem] h-full overflow-hidden shrink-0">
+                            <?php the_post_thumbnail('full', ['class' => 'object-cover w-full h-full']) ?>
                         <?php endif ?>
                     </div>
-                    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
-                        <h2 class="px-4 mt-6 max-w-[20ch] leading-tight break-words shrink-0"><?php the_title(); ?></h2>
-                        <p class="sm:px-10">
+                    <div class="flex flex-col md:flex-row justify-between items-center w-full h-full gap-4 mb-6 py-6">
+                        <h2 class="px-4 mt-6 md:w-1/3 leading-tight break-words shrink-0"><?php the_title(); ?></h2>
+                        <p class="sm:px-10 md:w-1/3 text-center md:text-left">
                             <?php if ($event_date_tba == 1): ?>
                                 Da annunciare
                             <?php elseif ($event_date_from && $event_date_to): ?>
-                                <?php echo esc_html($event_date_from) . " → " . esc_html($event_date_to); ?>
+                                <?php echo esc_html(convert_date_format($event_date_from)) . " → " . esc_html(convert_date_format($event_date_to)); ?>
                             <?php elseif ($event_date_from):
-                                echo esc_html($event_date_from)
+                                echo esc_html(convert_date_format($event_date_from))
                                     ?>
                             <?php endif; ?>
                         </p>
-                        <div class="sm:px-10 line-clamp-2">
+                        <div class="sm:px-10 md:w-1/3 line-clamp-3 overflow-hidden">
                             <?php echo get_the_content() ?>
                         </div>
                     </div>
