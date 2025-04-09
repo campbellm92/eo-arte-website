@@ -37,3 +37,17 @@ function convert_time_format($time_string)
     return $formatter->format($time);
 
 }
+
+function convert_to_day_and_short_month($date_string)
+{
+
+    if (!$date_string)
+        return '';
+
+    $date = new DateTime($date_string);
+
+    $formatter = new IntlDateFormatter('it_IT', IntlDateFormatter::LONG, IntlDateFormatter::NONE, 'Europe/Rome', IntlDateFormatter::GREGORIAN, "dd MMM");
+
+    return $formatter->format($date);
+
+}
