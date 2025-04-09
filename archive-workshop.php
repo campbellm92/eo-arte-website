@@ -52,8 +52,8 @@ $workshops = new WP_Query($args);
                     <?php if (has_post_thumbnail()): ?>
                         <div class="rounded-xs w-full md:w-[12.5rem] lg:w-[18.75rem] h-full overflow-hidden shrink-0">
                             <?php the_post_thumbnail('full', ['class' => 'object-cover w-full h-full']) ?>
-                        <?php endif ?>
-                    </div>
+                        </div>
+                    <?php endif ?>
                     <div class="flex flex-col md:flex-row justify-between items-center w-full h-full gap-4 mb-6 py-6">
                         <h2 class="px-4 mt-6 md:w-1/3 leading-tight break-words shrink-0"><?php the_title(); ?></h2>
                         <p class="sm:px-10 md:w-1/3 text-center md:text-left">
