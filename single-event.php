@@ -31,14 +31,14 @@ if (!defined('ABSPATH'))
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-12 gap-4 min-h-screen">
+                        <div class="flex flex-col md:grid md:grid-cols-12 md:gap-4 min-h-screen">
                             <div class="col-span-8 pl-4">
                                 <h2><?php the_title() ?></h2>
-                                <p><?php the_content() ?></p>
+                                <p class="text-xl text-dark-gray"><?php echo get_the_content() ?></p>
                             </div>
-
-                            <div class="col-span-4 col-start-10">
-                                <div class="text-red text-md font-bold">
+                            <!-- find a better solution for p element -->
+                            <div class="max-h-fit p-4 mt-4 bg-light-gray md:col-span-4 md:col-start-10 md:mt-0 md:mr-4">
+                                <p class="text-red text-md font-bold">
                                     <?php if ($event_date_tba == 1): ?>
                                         Da annunciare
                                     <?php elseif ($event_date_from && $event_date_to): ?>
@@ -47,7 +47,12 @@ if (!defined('ABSPATH'))
                                         echo esc_html(convert_date_format($event_date_from))
                                             ?>
                                     <?php endif; ?>
-                                </div>
+                                </p>
+                                <p class="text-dark-gray">
+                                    EO ARTE
+                                    via XX settembre,112, ASTI.
+                                </p>
+
                             </div>
                         </div>
 
