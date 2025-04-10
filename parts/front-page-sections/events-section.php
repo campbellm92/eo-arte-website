@@ -44,9 +44,9 @@ $events = new WP_Query($args);
                                 </div>
                             </div>
                         <?php endif ?>
-                        <div class="flex flex-col flex-grow p-6 text-center md:text-left">
-                            <h2 class="text-dark-gray"><?php the_title(); ?></h2>
-                            <p class="text-red text-lg">
+                        <div class="flex flex-col text-center md:text-left flex-grow p-6">
+                            <h2 class="text-dark-gray pb-2"><?php the_title(); ?></h2>
+                            <p class="text-red text-xs md:text-lg">
                                 <?php if ($event_date_tba == 1): ?>
                                     Da annunciare
                                 <?php elseif ($event_date_from && $event_date_to): ?>
@@ -57,7 +57,7 @@ $events = new WP_Query($args);
                                 <?php endif; ?>
 
                             </p>
-                            <p class="text-red text-lg pb-2">
+                            <p class="text-red text-xs md:text-lg pb-2">
                                 <?php if ($event_time_from && $event_time_to): ?>
                                     <?php echo esc_html("dalle " . convert_time_format($event_time_from)) . " alle " . esc_html(convert_time_format($event_time_to)); ?>
                                 <?php elseif ($event_time_from):
@@ -71,7 +71,7 @@ $events = new WP_Query($args);
                             <!-- copy and paste above and adjust for time -->
 
 
-                            <div class="card-event-description text-dark-gray text-xl">
+                            <div class="card-event-description text-dark-gray text-md md:text-xl">
                                 <!--needs a fix here - atm not making paras  -->
                                 <?php echo wpautop(get_the_content()) ?>
                             </div>
