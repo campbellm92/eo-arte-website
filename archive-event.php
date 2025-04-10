@@ -54,9 +54,10 @@ $events = new WP_Query($args);
                             <?php the_post_thumbnail('full', ['class' => 'object-cover w-full h-full']) ?>
                         </div>
                     <?php endif ?>
-                    <div class="flex flex-col md:flex-row justify-between md:items-center w-full h-full gap-4 mb-6 py-6 px-4">
+                    <div
+                        class="flex flex-col md:flex-row justify-between md:items-center text-center md:text-left w-full h-full gap-4 mb-6 py-6 px-4">
                         <h2 class="mt-6 md:w-1/3 leading-tight break-words shrink-0"><?php the_title(); ?></h2>
-                        <p class=" md:w-1/3 text-lg">
+                        <p class=" md:w-1/3 text-xs md:text-lg">
                             <?php if ($event_date_tba == 1): ?>
                                 Da annunciare
                             <?php elseif ($event_date_from && $event_date_to): ?>
@@ -66,7 +67,7 @@ $events = new WP_Query($args);
                                     ?>
                             <?php endif; ?>
                         </p>
-                        <p class="text-lg md:w-1/3 line-clamp-3 overflow-hidden">
+                        <p class="text md md:text-lg md:w-1/3 line-clamp-3 overflow-hidden">
                             <?php echo get_the_content() ?>
                         </p>
                     </div>
