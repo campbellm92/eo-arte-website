@@ -27,10 +27,10 @@ $workshops = new WP_Query($args);
 
     <div class="px-5">
         <div class="text-center md:text-left">
-            <h1 class="text-gray mb-5">CORSI</h1>
+            <h1 class="text-gray mb-5">WORKSHOP</h1>
         </div>
 
-        <div class="flex justify-center md:justify-start gap-5 mb-10">
+        <div class="flex flex-col md:flex-row justify-center md:justify-start gap-2 md:gap-5 mb-10">
             <?php echo (new Button('ATTUALI E PROSSIMI', '#'))->type('neutral')->variant('outline')->addClass('course-toggle-btn')->render(); ?>
             <?php echo (new Button('ARCHIVIO', '#'))->type('neutral')->variant('outline')->addClass('course-toggle-btn')->render(); ?>
         </div>
