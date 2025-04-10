@@ -30,7 +30,7 @@ $events = new WP_Query($args);
             <h1 class="text-gray mb-5">EVENTI</h1>
         </div>
 
-        <div class="flex justify-center md:justify-start gap-5 mb-10">
+        <div class="flex flex-col md:flex-row justify-center md:justify-start gap-2 md:gap-5 mb-10">
             <?php echo (new Button('ATTUALI E PROSSIMI', '#'))->type('neutral')->variant('outline')->addClass('event-toggle-btn show-present-events')->render(); ?>
             <?php echo (new Button('ARCHIVIO', '#'))->type('neutral')->variant('outline')->addClass('event-toggle-btn show-past-events')->render(); ?>
         </div>
@@ -54,9 +54,9 @@ $events = new WP_Query($args);
                             <?php the_post_thumbnail('full', ['class' => 'object-cover w-full h-full']) ?>
                         </div>
                     <?php endif ?>
-                    <div class="flex flex-col md:flex-row justify-between items-center w-full h-full gap-4 mb-6 py-6">
-                        <h2 class="px-4 mt-6 md:w-1/3 leading-tight break-words shrink-0"><?php the_title(); ?></h2>
-                        <p class="sm:px-10 md:w-1/3 text-center text-lg md:text-left">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center w-full h-full gap-4 mb-6 py-6 px-4">
+                        <h2 class="mt-6 md:w-1/3 leading-tight break-words shrink-0"><?php the_title(); ?></h2>
+                        <p class=" md:w-1/3 text-lg">
                             <?php if ($event_date_tba == 1): ?>
                                 Da annunciare
                             <?php elseif ($event_date_from && $event_date_to): ?>
@@ -66,7 +66,7 @@ $events = new WP_Query($args);
                                     ?>
                             <?php endif; ?>
                         </p>
-                        <p class="px-4 text-center text-lg md:text-left md:w-1/3 line-clamp-3 overflow-hidden">
+                        <p class="text-lg md:w-1/3 line-clamp-3 overflow-hidden">
                             <?php echo get_the_content() ?>
                         </p>
                     </div>
