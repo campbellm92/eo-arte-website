@@ -19,7 +19,7 @@ $events = new WP_Query($args);
             <h1 class="text-red mb-2">PROSSIMI EVENTI</h1>
             <div class="md:mr-6">
                 <!-- CHANGE URL TO GO TO ALL EVENTS PAGE -->
-                <?php echo (new Button('VEDI TUTTI', get_permalink()))->type('neutral')->variant('outline')->addClass('')->render(); ?>
+                <?php echo (new Button('VEDI TUTTI', home_url('/eventi')))->type('neutral')->variant('outline')->addClass('')->render(); ?>
             </div>
         </div>
 
@@ -46,7 +46,7 @@ $events = new WP_Query($args);
                         <?php endif ?>
                         <div class="flex flex-col flex-grow p-6 text-center md:text-left">
                             <h2 class="text-dark-gray"><?php the_title(); ?></h2>
-                            <p class="text-red">
+                            <p class="text-red text-lg">
                                 <?php if ($event_date_tba == 1): ?>
                                     Da annunciare
                                 <?php elseif ($event_date_from && $event_date_to): ?>
@@ -57,7 +57,7 @@ $events = new WP_Query($args);
                                 <?php endif; ?>
 
                             </p>
-                            <p class="text-red pb-2">
+                            <p class="text-red text-lg pb-2">
                                 <?php if ($event_time_from && $event_time_to): ?>
                                     <?php echo esc_html("dalle " . convert_time_format($event_time_from)) . " alle " . esc_html(convert_time_format($event_time_to)); ?>
                                 <?php elseif ($event_time_from):
@@ -71,7 +71,7 @@ $events = new WP_Query($args);
                             <!-- copy and paste above and adjust for time -->
 
 
-                            <div class="card-event-description text-dark-gray">
+                            <div class="card-event-description text-dark-gray text-xl">
                                 <!--needs a fix here - atm not making paras  -->
                                 <?php echo wpautop(get_the_content()) ?>
                             </div>

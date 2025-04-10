@@ -17,7 +17,7 @@ $workshops = new WP_Query($args);
             <h1 class="text-blue mb-2">I NOSTRI CORSI E WORKSHOP</h1>
             <div class="md:mr-6">
                 <!-- CHANGE URL TO GO TO ALL EVENTS PAGE -->
-                <?php echo (new Button('VEDI TUTTI', get_permalink()))->type('neutral')->variant('outline')->addClass('')->render(); ?>
+                <?php echo (new Button('VEDI TUTTI', home_url('/workshop')))->type('neutral')->variant('outline')->addClass('')->render(); ?>
             </div>
         </div>
 
@@ -47,7 +47,7 @@ $workshops = new WP_Query($args);
 
                         <div class="flex flex-col flex-grow text-center md:text-left p-6">
                             <h2 class="text-dark-gray"><?php the_title(); ?></h2>
-                            <p class="text-red pb-2">
+                            <p class="text-red text-lg pb-2">
                                 <?php if ($workshop_date_tba == 1): ?>
                                     Da annunciare
                                 <?php elseif ($workshop_date_from && $workshop_date_to): ?>
@@ -57,7 +57,7 @@ $workshops = new WP_Query($args);
                                         ?>
                                 <?php endif; ?>
                             </p>
-                            <div class="text-dark-gray pb-2">
+                            <div class="text-dark-gray text-xl pb-2">
                                 <!--needs a fix here - atm not making paras  -->
                                 <?php echo wpautop(get_the_content()) ?>
                             </div>
