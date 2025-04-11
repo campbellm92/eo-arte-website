@@ -4,7 +4,7 @@
     <!-- get_template_directory_uri not working here..? -->
     <div class="w-5/6 max-w-3xl bg-gray m-10 p-4 rounded-xs">
         <h1 class="text-red">ABOUT</h1>
-        <p class="text-2xl text-red font-semibold ">It's 3am, time to create some chaos commence midnight zoomies yet i
+        <p class="text-red font-semibold ">It's 3am, time to create some chaos commence midnight zoomies yet i
             is
             not fat, i is fluffy waffles terrorize the hundred-and-twenty-pound rottweiler and steal his bed, not
             sorry. Claws in the eye of the beholder go crazy with excitement when plates are clanked together
