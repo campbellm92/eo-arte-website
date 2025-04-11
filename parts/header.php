@@ -43,7 +43,19 @@
                     <?php
                     foreach ($page_names as $index => $page_name) {
                         $href = $pages[$index];
-                        echo "<li class='mobile-menu-nav-links'><a href='$href' class='text-blue hover:text-red font-medium text-xl visited:bg-blue'>$page_name</a></li>";
+
+                        $current_page = $_SERVER['REQUEST_URI'];
+
+                        $is_current = ($current_page == $href) ||
+                            ($href == '/' && $current_page == '/') ||
+                            ($href != '/' && strpos($current_page, $href) === 0);
+
+                        // Add active class if this is the current page
+                        $active_class = $is_current ? 'text-red font-bold' : 'text-blue hover:text-red';
+
+                        echo "<li class='mobile-menu-nav-links'><a href='$href' class='$active_class font-medium text-xl'>$page_name</a></li>";
+
+                        // echo "<li class='mobile-menu-nav-links'><a href='$href' class='text-blue hover:text-red font-medium text-xl'>$page_name</a></li>";
                     } ?>
                 </ul>
             </div>
