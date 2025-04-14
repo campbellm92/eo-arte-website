@@ -13,3 +13,12 @@ function register_styles()
 }
 add_action('wp_enqueue_scripts', 'register_styles');
 
+function register_scripts()
+{
+    if (is_page('eventi', 'workshop')) {
+        wp_enqueue_script('toggle-upcoming-archive', get_template_directory_uri() . '/assets/js/toggleUpcomingAndArchive.js', [], null, true);
+
+    }
+
+}
+add_action('wp_enqueue_scripts', 'register_scripts');
