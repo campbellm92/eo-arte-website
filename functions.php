@@ -2,9 +2,8 @@
 if (!defined('ABSPATH'))
     exit;
 
-//functions
+//functions and styles
 require_once 'inc/enqueue.php';
-
 
 //components
 require_once 'components/buttons.php';
@@ -19,3 +18,4 @@ require_once 'inc/theme-support.php';
 //handlers
 require_once 'inc/img-to-webp.php';
 require_once 'inc/date-time-formatters.php';
+require_once 'inc/get-svg-markup.php';
