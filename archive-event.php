@@ -31,25 +31,22 @@ $events = new WP_Query($args);
         </div>
 
         <div class="flex flex-col md:flex-row justify-center md:justify-start gap-2 md:gap-5 mb-10">
-            <?php echo (new Button('ATTUALI E PROSSIMI', '#'))->type('neutral')->variant('outline')->addClass('show-upcoming')->render(); ?>
-            <?php echo (new Button('ARCHIVIO', '#'))->type('neutral')->variant('outline')->addClass('show-archive')->render(); ?>
+            <?php echo (new Button('ATTUALI E PROSSIMI', '#'))->type('neutral')->variant('outline')->addClass('toggle-upcoming')->render(); ?>
+            <?php echo (new Button('ARCHIVIO', '#'))->type('neutral')->variant('outline')->addClass('toggle-archive')->render(); ?>
         </div>
 
     </div>
 
 
     <!-- Current and upcoming -->
-    <section class="min-h-screen px-5">
+    <section class="min-h-screen px-5 bg-blue">
         <?php if ($events->have_posts()):
             while ($events->have_posts()):
                 $events->the_post(); ?>
                 <?php
-
-
                 $event_date_from = get_post_meta(get_the_ID(), '_event_date_from', true);
                 $event_date_to = get_post_meta(get_the_ID(), '_event_date_to', true);
                 $event_date_tba = get_post_meta(get_the_ID(), '_event_date_tba', true);
-
                 $current_time = current_time('timestamp');
                 $event_date_from_timestamp = strtotime($event_date_from);
 
@@ -94,39 +91,6 @@ $events = new WP_Query($args);
 
 
 </main>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const showUpcomingButton = document.querySelector(".show-upcoming");
-        const showArchiveButton = document.querySelector(".show-archive");
-        const upcomingObjects = document.querySelectorAll(".upcoming");
-        const archiveObjects = document.querySelectorAll(".archive");
-
-        showUpcomingButton.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            upcomingObjects.forEach(event => {
-                event.style.display = "flex";
-            });
-            archiveObjects.forEach(event => {
-                event.style.display = "none";
-            });
-
-        });
-
-        showArchiveButton.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            upcomingObjects.forEach(event => {
-                event.style.display = "none";
-            });
-            archiveObjects.forEach(event => {
-                event.style.display = "flex";
-            });
-        })
-        showUpcoming.click();
-    })
-</script>
 
 
 
