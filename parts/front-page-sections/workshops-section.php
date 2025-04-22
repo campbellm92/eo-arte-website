@@ -11,10 +11,10 @@ $workshops = new WP_Query($args);
 ?>
 
 <section class="min-h-screen">
-    <div class="bg-red min-h-screen w-full py-10 px-4">
+    <div class="bg-blue min-h-screen w-full py-10 px-4">
 
         <div class="flex flex-col md:flex-row justify-between text-center md:text-left items-center pb-6">
-            <h1 class="text-blue mb-2">I NOSTRI WORKSHOP</h1>
+            <h1 class="text-red mb-2">I NOSTRI WORKSHOP</h1>
             <div class="md:mr-6">
                 <!-- CHANGE URL TO GO TO ALL EVENTS PAGE -->
                 <?php echo (new Button('VEDI TUTTI', home_url('/workshop')))->type('neutral')->variant('outline')->addClass('')->render(); ?>
@@ -33,7 +33,7 @@ $workshops = new WP_Query($args);
                     // $workshop_days = get_post_meta(get_the_ID(), '_workshop_days', true);
                     ?>
                     <div
-                        class="card flex flex-col flex-shrink-0 w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2 h-auto md:mr-10 bg-gray border-8 border-blue rounded-xs snap-start">
+                        class="card flex flex-col flex-shrink-0 w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2 h-auto md:mr-10 bg-gray border-8 border-red rounded-xs snap-start">
                         <div class="flex-shrink-0">
                             <div class="h-64 md:h-90 overflow-hidden">
                                 <?php if (has_post_thumbnail()): ?>
