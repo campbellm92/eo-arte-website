@@ -14,9 +14,9 @@ if (!defined('ABSPATH'))
                 $event_date_from = get_post_meta(get_the_ID(), '_event_date_from', true);
                 $event_date_to = get_post_meta(get_the_ID(), '_event_date_to', true);
                 $event_date_tba = get_post_meta(get_the_ID(), '_event_date_tba', true); ?>
-                <div class="min-h-full h-screen">
+                <div>
                     <?php if (has_post_thumbnail()): ?>
-                        <div class="flex items-end w-full h-full bg-no-repeat bg-center bg-cover mb-10"
+                        <div class="flex items-end w-full min-h-screen bg-no-repeat bg-center bg-cover mb-10"
                             style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>');">
 
                             <?php
