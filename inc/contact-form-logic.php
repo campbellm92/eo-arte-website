@@ -1,13 +1,41 @@
 <?php
 
+$errors = [];
+$inputs = [];
+$success = false;
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name_result = validate_name($_POST['name'] ?? '');
+    $email_result = validate_email($_POST['email'] ?? '');
+    $message_result = validate_message($_POST['message'] ?? '');
+
+    $inputs['name'] = $name_result['value'];
+    $inputs['email'] = $email_result['value'];
+    $inputs['message'] = $message_result['value'];
+
+
+    if ($name_result['error'])
+        $errors['name'] = $name_result['error'];
+
+    if ($email_result['error'])
+        $errors['email'] = $email_result['error'];
+
+    if ($message_result['error'])
+        $errors['message'] = $message_result['error'];
+
+    if (empty($errors)) {
+        $recipient_email = "m.campbell92@gmail.com";
+        send_email($inputs['name'], $inputs['email'], $inputs['message'], $recipient_email);
+        $success = true;
+    }
+
+}
 
 
 function send_email($name, $from_email, $message, $recipient_email)
 {
 
     $subject = "Nuovo messagio da $name";
-
     $headers[] = 'MIME-Version: 1.0';
     $headers[] = 'Content-type: text/html; charset=utf-8';
     $headers[] = "To: $recipient_email";
