@@ -10,8 +10,6 @@
 </head>
 
 
-<!-- script for changing navbar color on scroll in assets/js/change-nav-color.js -->
-
 <body>
     <header>
         <!-- main nav -->
@@ -24,7 +22,6 @@
                     $page_names = array("home", "about", "eventi", "workshop", "contattateci");
                     $style =
                         "text-gray font-semibold bg-blue px-3 rounded-xs hover:text-blue hover:bg-gray hover:outline hover:outline-blue transition duration-600 ease-in-out";
-                    // look into styles for when page has been clicked and the user is on that page
                     foreach ($page_names as $index => $page_name) {
                         $href = $pages[$index];
                         echo "<li class='nav-links $style'><a href=$href >$page_name</a></li>";
@@ -54,8 +51,6 @@
                         $active_class = $is_current ? 'text-red font-bold' : 'text-blue hover:text-red';
 
                         echo "<li class='mobile-menu-nav-links'><a href='$href' class='$active_class font-medium text-xl'>$page_name</a></li>";
-
-                        // echo "<li class='mobile-menu-nav-links'><a href='$href' class='text-blue hover:text-red font-medium text-xl'>$page_name</a></li>";
                     } ?>
                 </ul>
             </div>
