@@ -71,9 +71,9 @@ $events = new WP_Query($args);
                             <!-- copy and paste above and adjust for time -->
 
 
-                            <div class="text-dark-gray">
+                            <div class="text-dark-gray line-clamp-3">
                                 <!--needs a fix here - atm not making paras  -->
-                                <?php echo wpautop(get_the_content()) ?>
+                                <?php echo (get_the_content()) ?>
                             </div>
                             <div class="mt-auto">
                                 <?php echo (new Button('SCOPRI DI PIÙ', get_permalink()))->type('secondary')->variant('outline')->addClass('mt-4 w-full text-center')->render(); ?>
