@@ -24,21 +24,26 @@ if (!defined('ABSPATH'))
                             $parts = explode(' ', $date_string);
                             ?>
                             <div class="bg-gray max-w-3xl h-auto m-10 rounded-xs">
+
                                 <div class="flex flex-col text-center p-2">
-                                    <span class="text-5xl font-bold text-red pb-0"><?php echo $parts[0] ?></span>
-                                    <span class="text-5xl font-bold text-red"><?php echo $parts[1] ?></span>
+                                    <?php if (empty($date_string)): ?>
+                                        <span class="text-5xl font-bold text-red">Da annunciare</span>
+                                    <?php else: ?>
+                                        <span class="text-5xl font-bold text-red pb-0"><?php echo $parts[0] ?></span>
+                                        <span class="text-5xl font-bold text-red"><?php echo $parts[1] ?></span>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
 
                         <div class="flex flex-col md:grid md:grid-cols-12 md:gap-4 min-h-screen">
-                            <div class="col-span-8 pl-4">
+                            <div class="col-span-8 pl-4 md:pl-8">
                                 <h2 class="text-dark-gray pb-4"><?php the_title() ?></h2>
                                 <div class="text-dark-gray pr-4 md:pr-0"><?php echo wpautop(get_the_content()) ?></div>
                             </div>
-                            <!-- find a better solution for p element -->
+
                             <div class="max-h-fit p-4 mt-4 bg-light-gray md:col-span-4 md:col-start-10 md:mt-0 md:mr-4">
-                                <p class="small-text text-red font-bold">
+                                <p class="text-red font-bold">
                                     <?php if ($event_date_tba == 1): ?>
                                         Da annunciare
                                     <?php elseif ($event_date_from && $event_date_to): ?>
@@ -48,10 +53,34 @@ if (!defined('ABSPATH'))
                                             ?>
                                     <?php endif; ?>
                                 </p>
-                                <p class="small-text text-dark-gray">
-                                    EO ARTE
-                                    via XX settembre,112, ASTI.
-                                </p>
+
+                                <div>
+                                    <p class="small-text font-semibold text-blue">
+                                        EO ARTE
+                                        via XX settembre, 112, ASTI.
+                                    </p>
+                                </div>
+
+                                <hr class="text-red mb-4">
+
+                                <?php
+                                $artist = get_field('artist');
+                                if ($artist): ?>
+
+                                    <div>
+                                        <div class="flex flex-col items-center text-center ">
+                                            <div class="rounded-full overflow-hidden w-48 h-48">
+                                                <?php echo get_the_post_thumbnail($artist, 'medium', ['class' => 'w-full h-full object-cover']); ?>
+                                            </div>
+                                        </div>
+
+                                        <p class="small-text text-center">
+                                            <?php echo apply_filters('the_content', $artist->post_content); ?>
+                                        </p>
+                                    </div>
+
+                                <?php endif; ?>
+
 
                             </div>
                         </div>
