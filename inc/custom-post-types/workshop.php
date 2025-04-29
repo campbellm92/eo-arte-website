@@ -18,7 +18,7 @@ function register_workshop_post_type()
         'labels' => $labels,
         'description' => 'Visualizzare, aggiungere, modificare, eliminare workshop',
         'public' => true,
-        'menu_position' => 2,
+        'menu_position' => 7,
         'has_archive' => true,
         'rewrite' => ['slug' => 'workshop'],
         'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'autosave'],

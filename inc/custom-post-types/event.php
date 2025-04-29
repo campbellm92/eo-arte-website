@@ -18,7 +18,7 @@ function register_event_post_type()
         'labels' => $labels,
         'description' => 'Visualizzare, aggiungere, modificare, eliminare eventi',
         'public' => true,
-        'menu_position' => 2,
+        'menu_position' => 5,
         'has_archive' => true,
         'rewrite' => ['slug' => 'eventi'],
         // title > wp default; date + time > custom (not here); short desc > custom; long desc > default ('editor'); featured img > default ('thumbnail'); event link > custom (might not need)
