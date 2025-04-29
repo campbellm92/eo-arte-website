@@ -1,67 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 @import "tailwindcss";
-
 
 /* custom theme config for Tailwind v4  */
 @theme {
-    /* fonts */
-    --font-albert: "Albert Sans", sans-serif;
-    --font-jetbrains: "JetBrains Mono", monospace;
+  /* fonts */
+  --font-albert: "Albert Sans", sans-serif;
+  --font-jetbrains: "JetBrains Mono", monospace;
 
-    /* colors */
+  /* colors */
 
-    --color-blue: rgb(24, 36, 64);
-    --color-blue-hover: rgba(24, 36, 64, 0.9);
-    --color-red: rgb(205, 23, 25);
-    --color-red-hover: rgba(205, 23, 25, 0.9);
-    --color-gray: rgb(248, 249, 250);
-    --color-gray-hover: rgba(248, 249, 250, 0.9);
-    --color-light-gray: rgb(222, 226, 230);
-    --color-dark-gray: rgb(13, 15, 18);
+  --color-blue: rgb(24, 36, 64);
+  --color-blue-hover: rgba(24, 36, 64, 0.9);
+  --color-red: rgb(205, 23, 25);
+  --color-red-hover: rgba(205, 23, 25, 0.9);
+  --color-gray: rgb(248, 249, 250);
+  --color-gray-hover: rgba(248, 249, 250, 0.9);
+  --color-light-gray: rgb(222, 226, 230);
+  --color-dark-gray: rgb(13, 15, 18);
 
-    /* custom properties */
-    --shadow-md: 0.2rem 0.2rem rgb(13, 15, 18);
+  /* custom properties */
+  --shadow-md: 0.2rem 0.2rem rgb(13, 15, 18);
 }
 
 body {
-    font-family: var(--font-albert);
-    background-color: var(--color-gray);
+  font-family: var(--font-albert);
+  background-color: var(--color-gray);
 }
 
 /* hide scrollbar for events and courses section on homepage */
 .scrollbar-hide {
-    /* IE and Edge */
-    -ms-overflow-style: none;
-    /* Firefox */
-    scrollbar-width: none;
+  /* IE and Edge */
+  -ms-overflow-style: none;
+  /* Firefox */
+  scrollbar-width: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-    /* Chrome, Safari, Opera */
-    display: none;
-
+  /* Chrome, Safari, Opera */
+  display: none;
 }
 
 h1 {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    font-weight: bolder;
-    line-height: 1;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: bolder;
+  line-height: 1;
 }
 
 h2 {
-    font-size: clamp(1.5rem, 4vw, 2.75rem);
-    font-weight: bolder;
-    line-height: 1;
+  font-size: clamp(1.5rem, 4vw, 2.75rem);
+  font-weight: bolder;
+  line-height: 1;
 }
 
 p {
-    font-size: clamp(0.95rem, 1.6vw, 1.25rem);
-    line-height: 1.6;
+  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
 .small-text {
-    font-size: clamp(0.925rem, 1.4vw, 1.1rem);
-    line-height: 1.4;
+  font-size: clamp(0.925rem, 1.4vw, 1.1rem);
+  line-height: 1.4;
 }
 
 /* 
@@ -71,7 +70,7 @@ p {
 } */
 
 .btn {
-    font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
 /* .btn-container {
@@ -83,19 +82,19 @@ p {
 /* styles for navbar change-on-scroll */
 /* see also change-nav-color.js */
 #main-nav {
-    transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
 }
 
 #main-nav.main-nav-scrolled {
-    background-color: var(--color-blue);
+  background-color: var(--color-blue);
 }
 
 #site-title {
-    transition: color 0.5s ease;
+  transition: color 0.5s ease;
 }
 
 #site-title.site-title-scrolled {
-    color: var(--color-gray);
+  color: var(--color-gray);
 }
 
 /* .nav-links {
@@ -103,14 +102,14 @@ p {
 } */
 
 .nav-links.links-default {
-    background-color: var(--color-gray);
-    color: var(--color-blue);
+  background-color: var(--color-gray);
+  color: var(--color-blue);
 }
 
 .nav-links.links-default:hover {
-    background-color: var(--color-blue);
-    color: var(--color-gray);
-    outline: 1px solid var(--color-gray);
+  background-color: var(--color-blue);
+  color: var(--color-gray);
+  outline: 1px solid var(--color-gray);
 }
 
 /* Event cards section */
@@ -127,16 +126,14 @@ p {
     font-size: clamp(0.75rem, 0.9vw, 0.95rem);
 } */
 
-
-
 /* Gallery section with masonry grid and slide in up animation(?) */
 .masonry-grid {
-    column-count: 3;
-    column-gap: 2rem;
+  column-count: 3;
+  column-gap: 2rem;
 }
 
 .masonry-grid img {
-    width: 100%;
-    display: block;
-    margin-bottom: 2rem;
+  width: 100%;
+  display: block;
+  margin-bottom: 2rem;
 }
