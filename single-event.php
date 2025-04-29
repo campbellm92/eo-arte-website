@@ -34,7 +34,7 @@ if (!defined('ABSPATH'))
                         <div class="flex flex-col md:grid md:grid-cols-12 md:gap-4 min-h-screen">
                             <div class="col-span-8 pl-4">
                                 <h2 class="text-dark-gray pb-4"><?php the_title() ?></h2>
-                                <p class="text-dark-gray pr-4 md:pr-0"><?php echo get_the_content() ?></p>
+                                <div class="text-dark-gray pr-4 md:pr-0"><?php echo wpautop(get_the_content()) ?></div>
                             </div>
                             <!-- find a better solution for p element -->
                             <div class="max-h-fit p-4 mt-4 bg-light-gray md:col-span-4 md:col-start-10 md:mt-0 md:mr-4">
