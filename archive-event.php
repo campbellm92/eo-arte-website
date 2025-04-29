@@ -79,9 +79,9 @@ $events = new WP_Query($args);
                                     ?>
                             <?php endif; ?>
                         </p>
-                        <p class="text md md:text-lg md:w-1/3 line-clamp-3 overflow-hidden">
+                        <div class="text md md:text-lg md:w-1/3 line-clamp-3 overflow-hidden">
                             <?php echo get_the_content() ?>
-                        </p>
+                        </div>
                     </div>
                 </div>
             <?php endwhile; endif; ?>
