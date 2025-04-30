@@ -22,22 +22,16 @@
   --shadow-md: 0.2rem 0.2rem rgb(13, 15, 18);
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 body {
   font-family: var(--font-albert);
   background-color: var(--color-gray);
-}
-
-/* hide scrollbar for events and courses section on homepage */
-.scrollbar-hide {
-  /* IE and Edge */
-  -ms-overflow-style: none;
-  /* Firefox */
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  /* Chrome, Safari, Opera */
-  display: none;
 }
 
 h1 {
@@ -63,24 +57,30 @@ p {
   line-height: 1.4;
 }
 
-/* 
-p {
-  font-size: clamp(1rem, 1.75vw, 1.25rem);
-  line-height: 1.6;
-} */
-
 .btn {
   font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
-/* .btn-container {
-    display: flex;
-    justify-content: flex-end;
+/* Loading page/overlay */
 
-} */
+#loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(205, 23, 25);
+  z-index: 9999;
+}
+
+#loading-screen video {
+  width: 50rem;
+  height: auto;
+}
 
 /* styles for navbar change-on-scroll */
-/* see also change-nav-color.js */
 #main-nav {
   transition: background-color 0.5s ease;
 }
@@ -97,10 +97,6 @@ p {
   color: var(--color-gray);
 }
 
-/* .nav-links {
-    display: block;
-} */
-
 .nav-links.links-default {
   background-color: var(--color-gray);
   color: var(--color-blue);
@@ -112,19 +108,18 @@ p {
   outline: 1px solid var(--color-gray);
 }
 
-/* Event cards section */
-
-/* .card-event-title {
-    font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+/* Hide scrollbar for events and courses section on homepage */
+.scrollbar-hide {
+  /* IE and Edge */
+  -ms-overflow-style: none;
+  /* Firefox */
+  scrollbar-width: none;
 }
 
-.card-time-date {
-    font-size: clamp(0.8rem, 2vw, 1.3rem);
+.scrollbar-hide::-webkit-scrollbar {
+  /* Chrome, Safari, Opera */
+  display: none;
 }
-
-.card-event-description {
-    font-size: clamp(0.75rem, 0.9vw, 0.95rem);
-} */
 
 /* Gallery section with masonry grid and slide in up animation(?) */
 .masonry-grid {
