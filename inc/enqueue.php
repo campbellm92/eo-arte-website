@@ -15,9 +15,16 @@ add_action('wp_enqueue_scripts', 'register_styles');
 
 function register_scripts()
 {
-    // if (is_page('eventi', 'workshop')) {
+
     wp_enqueue_script('toggle-upcoming-archive', get_template_directory_uri() . '/assets/js/toggleUpcomingAndArchive.js', [], null, true);
 
+    if (is_front_page()) {
+        wp_enqueue_script('loading-screen', get_template_directory_uri() . '/assets/js/loadingScreen.js', [], null, true);
+    }
+
+
+    // if (is_page('eventi', 'workshop')) {
+    // wp_enqueue_script('toggle-upcoming-archive', get_template_directory_uri() . '/assets/js/toggleUpcomingAndArchive.js', [], null, true);
     // }
 
 }
