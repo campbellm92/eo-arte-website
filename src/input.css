@@ -64,7 +64,7 @@ p {
 /* Loading page/overlay */
 
 #loading-screen {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   position: fixed;
