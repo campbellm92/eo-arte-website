@@ -11,13 +11,15 @@
 
 
 <body>
-    <!-- <?php if (is_front_page()): ?> -->
+
+    <?php if (is_front_page()): ?>
         <div id="loading-screen">
             <video id="loading-video" autoplay muted playsinline>
                 <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/dream.mp4" type="video/mp4">
             </video>
         </div>
-        <!-- <?php endif ?> -->
+    <?php endif; ?>
+
     <header>
         <!-- main nav -->
         <nav class="flex justify-between items-center max-w-screen w-full bg-inherit p-4 fixed top-0" id="main-nav">
