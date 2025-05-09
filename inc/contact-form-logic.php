@@ -1,10 +1,28 @@
 <?php
 
-$errors = [];
-$inputs = [];
-$success = false;
+if (!session_id()) {
+    session_start();
+}
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+require __DIR__ . "/../vendor/autoload.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
+use Dotenv\Dotenv;
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+function handle_contact_form_submission()
+{
+    if (!isset($_POST['contact_form_nonce']) || !wp_verify_nonce($_POST['contact_form_nonce'], 'contact_form_submit')) {
+        wp_die('Security check failed');
+    }
+
+    $errors = [];
+    $inputs = [];
+    $success = false;
+
     $name_result = validate_name($_POST['name'] ?? '');
     $email_result = validate_email($_POST['email'] ?? '');
     $message_result = validate_message($_POST['message'] ?? '');
@@ -25,26 +43,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($errors)) {
         $recipient_email = "m.campbell92@gmail.com";
-        send_email($inputs['name'], $inputs['email'], $inputs['message'], $recipient_email);
-        $success = true;
+
+        try {
+            $mail = new PHPMailer(true);
+
+            // comment out when finished testing
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+
+            $mail->Username = $_ENV["USER"];
+            $mail->Password = $_ENV["PASS"];
+
+            $mail->setFrom($email_result['value'], $name_result['value']);
+            $mail->addAddress($recipient_email, 'Matt');
+
+            $mail->Subject = 'Hai un nuovo messagio.';
+            $mail->Body = $message_result['value'];
+
+            $mail->send();
+            $success = true;
+        } catch (Exception $e) {
+            $errors['mail'] = 'Impossibile inviare il messaggio. Mailer error: ' . $mail->ErrorInfo;
+        }
+
+
     }
 
+    $_SESSION['form_errors'] = $errors;
+    $_SESSION['form_inputs'] = $inputs;
+    $_SESSION['form_success'] = $success;
+
+    wp_redirect(wp_get_referer() ?: get_permalink(get_page_by_path('contact')));
+    exit;
 }
+add_action('admin_post_submit_contact_form', 'handle_contact_form_submission');
+add_action('admin_post_nopriv_submit_contact_form', 'handle_contact_form_submission');
 
-
-function send_email($name, $from_email, $message, $recipient_email)
-{
-
-    $subject = "Nuovo messagio da $name";
-    $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset=utf-8';
-    $headers[] = "To: $recipient_email";
-    $headers[] = "From: $from_email";
-    $header_string = implode("\r\n", $headers);
-
-
-    wp_mail($recipient_email, $subject, $message, $header_string);
-}
 
 function validate_name($name)
 {
@@ -76,3 +116,7 @@ function validate_message($message)
     }
     return ['value' => $message, 'error' => null];
 }
+
+
+
+
