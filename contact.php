@@ -4,9 +4,19 @@
 if (!defined('ABSPATH'))
     exit;
 
-require get_theme_file_path('inc/contact-form-logic.php');
 
+require_once get_template_directory() . '/inc/contact-form-logic.php';
 
+$errors = $_SESSION['form_errors'] ?? [];
+$inputs = $_SESSION['form_inputs'] ?? [];
+$success = $_SESSION['form_success'] ?? false;
+
+unset($_SESSION['form_errors']);
+unset($_SESSION['form_inputs']);
+unset($_SESSION['form_success']);
+
+// require get_theme_file_path('inc/contact-form-logic.php');
+// require __DIR__ . '/inc/contact-form-logic.php'
 ?>
 
 <?php get_template_part('parts/header'); ?>
@@ -15,7 +25,8 @@ require get_theme_file_path('inc/contact-form-logic.php');
 <main>
     <section class="min-h-screen bg-gray mt-10">
         <div class="flex justify-center items-center w-full h-screen">
-            <form action="<?= esc_url(get_permalink()) ?>" method="post" class="flex flex-col p-4 bg-blue rounded-xs">
+            <form action="<?= esc_url($_SERVER['REQUEST_URI']) ?>" method="POST"
+                class="flex flex-col p-4 bg-blue rounded-xs">
 
                 <p class="text-gray font-semibold mb-2">Send us a message</p>
 
@@ -53,7 +64,6 @@ require get_theme_file_path('inc/contact-form-logic.php');
                 <?php endif ?>
             </form>
         </div>
-
     </section>
 
 </main>
