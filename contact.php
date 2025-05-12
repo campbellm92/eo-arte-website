@@ -4,19 +4,6 @@
 if (!defined('ABSPATH'))
     exit;
 
-
-require_once get_template_directory() . '/inc/contact-form-logic.php';
-
-$errors = $_SESSION['form_errors'] ?? [];
-$inputs = $_SESSION['form_inputs'] ?? [];
-$success = $_SESSION['form_success'] ?? false;
-
-unset($_SESSION['form_errors']);
-unset($_SESSION['form_inputs']);
-unset($_SESSION['form_success']);
-
-// require get_theme_file_path('inc/contact-form-logic.php');
-// require __DIR__ . '/inc/contact-form-logic.php'
 ?>
 
 <?php get_template_part('parts/header'); ?>
@@ -25,43 +12,29 @@ unset($_SESSION['form_success']);
 <main>
     <section class="min-h-screen bg-gray mt-10">
         <div class="flex justify-center items-center w-full h-screen">
-            <form action="<?= esc_url($_SERVER['REQUEST_URI']) ?>" method="POST"
-                class="flex flex-col p-4 bg-blue rounded-xs">
+            <form action="" method="POST" class="flex flex-col p-4 bg-blue rounded-xs">
 
                 <p class="text-gray font-semibold mb-2">Send us a message</p>
 
                 <label for="name" class="mb-1 text-gray">Nome</label>
-                <input type="text" name="name" id="name" placeholder="Inserisci il tuo nome"
-                    value="<?= esc_attr($inputs['name'] ?? '') ?>"
+                <input type="text" name="name" id="name" placeholder="Inserisci il tuo nome" value=""
                     class="border border-gray text-gray rounded-xs p-1 mb-3 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray"
                     required>
-                <?php if (!empty($errors['name'])): ?>
-                    <p class="text-red-500"><?= esc_html($errors['name']) ?></p>
-                <?php endif ?>
+
 
                 <label for="email" class="mb-1 text-gray">Email</label>
-                <input type="email" name="email" id="email" placeholder="Inserisci il tuo email"
-                    value="<?= esc_attr($inputs['email'] ?? '') ?>"
+                <input type="email" name="email" id="email" placeholder="Inserisci il tuo email" value=""
                     class="border border-gray text-gray rounded-xs p-1 mb-3 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray"
                     required>
-                <?php if (!empty($errors['email'])): ?>
-                    <p class="text-red-500"><?= esc_html($errors['email']) ?></p>
-                <?php endif ?>
 
                 <label for="message" class="mb-1 text-gray">Il tuo messaggio</label>
                 <textarea name="message" id="message" placeholder="Scrivi qualcosa"
                     class="border border-gray text-gray rounded-xs p-1 mb-3 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray"
-                    required><?= esc_textarea($inputs['message'] ?? '') ?></textarea>
-                <?php if (!empty($errors['message'])): ?>
-                    <p class="text-red-500"><?= esc_html($errors['message']) ?></p>
-                <?php endif ?>
+                    required></textarea>
 
                 <button type="submit"
                     class="inline-block font-extrabold px-3 rounded-xs text-center text-dark-gray bg-gray hover:bg-gray-hover transition-hover duration-500 ease-in-out cursor-pointer">SEND</button>
 
-                <?php if ($success): ?>
-                    <p class="text-gray">Messaggio inviato con sucesso!</p>
-                <?php endif ?>
             </form>
         </div>
     </section>
