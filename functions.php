@@ -20,4 +20,4 @@ require_once 'inc/theme-support.php';
 require_once 'inc/img-to-webp.php';
 require_once 'inc/date-time-formatters.php';
 require_once 'inc/get-svg-markup.php';
-// require_once 'inc/contact-form-logic.php';
+require_once 'inc/handle-contact-form-submission.php';
