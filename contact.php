@@ -35,7 +35,11 @@ if (!defined('ABSPATH'))
 
                 <button type="submit"
                     class="inline-block font-extrabold px-3 rounded-xs text-center text-dark-gray bg-gray hover:bg-gray-hover transition-hover duration-500 ease-in-out cursor-pointer">SEND</button>
-                <div id="successMessage" style="display: none" class="text-xs text-gray mb-2"></div>
+                <?php if (isset($_GET['success']) && $_GET['success'] === 'true'): ?>
+                    <div id="successMessage" style="display: none" class="text-gray mb-2">
+                        Il tuo messaggio è stato inviato con successo!
+                    </div>
+                <?php endif; ?>
             </form>
         </div>
     </section>
@@ -50,7 +54,16 @@ if (!defined('ABSPATH'))
     const nameError = document.getElementById("nameError");
     const emailError = document.getElementById("emailError");
     const messageError = document.getElementById("messageError");
-    // const successMessage = document.getElementById("successMessage")
+    const successMessage = document.getElementById("successMessage")
+
+    if (successMessage) {
+        setTimeout(() => {
+            successMessage.style.display = "block";
+            setTimeout(() => {
+                formSuccessMessage.style.display = "none";
+            }, 1000);
+        }, 5000);
+    }
 
 
     function isValidEmail(email) {
@@ -72,8 +85,6 @@ if (!defined('ABSPATH'))
 
     contactForm.addEventListener("submit", function (e) {
         e.preventDefault();
-
-
 
         let hasErrors = false;
 
