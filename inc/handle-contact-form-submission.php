@@ -6,6 +6,13 @@ function handle_contact_form_submission()
     $email = sanitize_email($_POST['email']);
     $message = sanitize_textarea_field($_POST['message']);
 
+    $has_errors = empty($name) || empty($email) || !is_email($email) || empty($message);
+
+    if ($has_errors) {
+        wp_redirect(home_url('/contattateci/?success=false'));
+        exit;
+    }
+
     $adminEmail = get_option('admin_email');
 
     wp_mail($adminEmail, sprintf("New message from %s email: %s", $name, $email), $message);

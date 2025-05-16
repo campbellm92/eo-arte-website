@@ -10,34 +10,39 @@ if (!defined('ABSPATH'))
 
 
 <main>
-    <section class="min-h-screen bg-gray mt-10">
+    <section
+        class="min-h-screen mt-10 bg-[url(/wp-content/themes/eo-main/assets/images/eo-workshop.webp)] bg-no-repeat bg-center bg-cover lg:bg-fixed flex flex-col justify-center">
         <div class="flex justify-center items-center w-full h-screen">
             <form action="/wp-admin/admin-post.php" method="POST" id="contactForm"
-                class="flex flex-col p-4 bg-blue rounded-xs">
+                class="flex flex-col p-4 w-sm h-max bg-blue rounded-xs">
                 <input type="hidden" name="action" value="submit_contact_form">
 
                 <p class="text-gray font-semibold mb-2">Send us a message</p>
 
                 <label for="name" class="mb-1 text-gray">Nome</label>
                 <input type="text" name="name" id="name" placeholder="Inserisci il tuo nome" value=""
-                    class="border border-gray text-gray rounded-xs p-1 mb-2 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray">
-                <div id="nameError" style="display: none" class="text-xs text-red mb-2">Inserisci il tuo nome</div>
+                    class="border border-gray text-gray rounded-xs p-1 mb-4 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray">
+                <div id="nameError" style="display: none" class="text-red text-sm mb-2">Inserisci il tuo nome</div>
 
                 <label for="email" class="mb-1 text-gray">Email</label>
                 <input type="email" name="email" id="email" placeholder="Inserisci il tuo email" value=""
-                    class="border border-gray text-gray rounded-xs p-1 mb-2 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray">
-                <div id="emailError" style="display: none" class="text-xs text-red mb-2"></div>
+                    class="border border-gray text-gray rounded-xs p-1 mb-4 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray">
+                <div id="emailError" style="display: none" class="text-red text-sm mb-2"></div>
 
                 <label for="message" class="mb-1 text-gray">Il tuo messaggio</label>
                 <textarea name="message" id="message" placeholder="Scrivi qualcosa"
-                    class="border border-gray text-gray rounded-xs p-1 mb-2 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray"></textarea>
-                <div id="messageError" style="display: none" class="text-xs text-red mb-2"></div>
+                    class="border border-gray text-gray rounded-xs p-1 mb-4 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray"></textarea>
+                <div id="messageError" style="display: none" class="text-red text-sm mb-2"></div>
 
                 <button type="submit"
-                    class="inline-block font-extrabold px-3 rounded-xs text-center text-dark-gray bg-gray hover:bg-gray-hover transition-hover duration-500 ease-in-out cursor-pointer">SEND</button>
+                    class="inline-block font-extrabold px-3 w-1/2 self-center rounded-xs text-center text-dark-gray bg-gray hover:bg-gray-hover transition-hover duration-500 ease-in-out cursor-pointer">SEND</button>
                 <?php if (isset($_GET['success']) && $_GET['success'] === 'true'): ?>
-                    <div id="successMessage" style="display: none" class="text-gray mb-2">
+                    <div id="successMessage" style="display: none" class="text-gray text-sm my-2">
                         Il tuo messaggio è stato inviato con successo!
+                    </div>
+                <?php elseif (isset($_GET['success']) && $_GET['success'] === 'false'): ?>
+                    <div class="text-red text-sm my-2">
+                        Qualcosa è andato storto. Compila tutti i campi prima di inviare.
                     </div>
                 <?php endif; ?>
             </form>
@@ -57,12 +62,7 @@ if (!defined('ABSPATH'))
     const successMessage = document.getElementById("successMessage")
 
     if (successMessage) {
-        setTimeout(() => {
-            successMessage.style.display = "block";
-            setTimeout(() => {
-                formSuccessMessage.style.display = "none";
-            }, 1000);
-        }, 5000);
+        successMessage.style.display = "block";
     }
 
 
@@ -91,22 +91,26 @@ if (!defined('ABSPATH'))
         if (nameInput.value.trim() === "") {
             nameError.style.display = "block";
             hasErrors = true;
+            successMessage.style.display = "none";
         }
 
         if (emailInput.value.trim() === "") {
             emailError.style.display = "block";
             emailError.innerText = "Inserisci la tua e-mail";
             hasErrors = true;
+            successMessage.style.display = "none";
         } else if (!isValidEmail(emailInput.value.trim())) {
             emailError.style.display = "block";
             emailError.innerText = "L'e-mail inserita non è valida"
             hasErrors = true;
+            successMessage.style.display = "none";
         };
 
         if (messageInput.value.trim() === "") {
             messageError.style.display = "block";
             messageError.innerText = "Non hai scritto qualcosa!"
             hasErrors = true;
+            successMessage.style.display = "none";
         };
 
         if (!hasErrors) {
