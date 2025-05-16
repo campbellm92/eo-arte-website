@@ -67,9 +67,9 @@ $events = new WP_Query($args);
                         </div>
                     <?php endif ?>
                     <div
-                        class="flex flex-col md:flex-row justify-between md:items-center text-center md:text-left w-full h-full gap-4 mb-6 py-6 px-4">
+                        class="flex flex-col md:flex-row md:items-center text-center md:text-left w-full h-full gap-4 mb-6 py-6 px-4">
                         <h2 class="mt-6 md:mt-0 md:w-1/3 leading-tight break-words shrink-0"><?php the_title(); ?></h2>
-                        <p class="md:w-1/3">
+                        <p class="md:w-1/3 md:mb-0">
                             <?php if ($event_date_tba == 1): ?>
                                 Da annunciare
                             <?php elseif ($event_date_from && $event_date_to): ?>
