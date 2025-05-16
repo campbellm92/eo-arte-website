@@ -12,7 +12,7 @@ function handle_contact_form_submission()
 
     error_log("Sending contact form email to: " . $adminEmail);
 
-    wp_redirect(home_url('/'));
+    wp_redirect(home_url('/contattateci/?success=true'));
     exit;
 }
 add_action('admin_post_nopriv_submit_contact_form', 'handle_contact_form_submission');
