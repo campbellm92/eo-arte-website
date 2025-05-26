@@ -14,7 +14,7 @@ $workshops = new WP_Query($args);
     <div class="bg-blue min-h-screen w-full py-10 px-4">
 
         <div class="flex flex-col md:flex-row justify-between text-center md:text-left items-center pb-6">
-            <h1 class="text-red mb-2">I NOSTRI WORKSHOP</h1>
+            <h1 class="text-gray mb-2">I NOSTRI WORKSHOP</h1>
             <div class="md:mr-6">
                 <!-- CHANGE URL TO GO TO ALL EVENTS PAGE -->
                 <?php echo (new Button('VEDI TUTTI', home_url('/workshop')))->type('neutral')->variant('outline')->addClass('')->render(); ?>
@@ -33,7 +33,7 @@ $workshops = new WP_Query($args);
                     // $workshop_days = get_post_meta(get_the_ID(), '_workshop_days', true);
                     ?>
                     <div
-                        class="card flex flex-col flex-shrink-0 w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2 h-auto md:mr-10 bg-gray border-8 border-red rounded-xs snap-start">
+                        class="card flex flex-col flex-shrink-0 w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/2 h-auto md:mr-10 bg-inherit border-8 border-gray rounded-xs snap-start">
                         <div class="flex-shrink-0">
                             <div class="h-64 md:h-90 overflow-hidden">
                                 <?php if (has_post_thumbnail()): ?>
@@ -46,8 +46,8 @@ $workshops = new WP_Query($args);
                         </div>
 
                         <div class="flex flex-col flex-grow text-center md:text-left p-6">
-                            <h2 class="text-dark-gray pb-2"><?php the_title(); ?></h2>
-                            <p class="small-text text-red font-semibold pb-2">
+                            <h2 class="text-gray pb-2"><?php the_title(); ?></h2>
+                            <p class="small-text text-gray font-semibold pb-2">
                                 <?php if ($workshop_date_tba == 1): ?>
                                     Da annunciare
                                 <?php elseif ($workshop_date_from && $workshop_date_to): ?>
@@ -57,12 +57,12 @@ $workshops = new WP_Query($args);
                                         ?>
                                 <?php endif; ?>
                             </p>
-                            <div class="text-dark-gray pb-2">
+                            <div class="text-gray pb-2">
                                 <!--needs a fix here - atm not making paras  -->
                                 <?php echo wpautop(get_the_content()) ?>
                             </div>
                             <div class="mt-auto">
-                                <?php echo (new Button('BOOK NOW', get_permalink()))->type('secondary')->variant('outline')->addClass('mt-4 w-full text-center')->render(); ?>
+                                <?php echo (new Button('BOOK NOW', get_permalink()))->type('neutral')->variant('outline')->addClass('mt-4 w-full text-center')->render(); ?>
                             </div>
                         </div>
                     </div>
