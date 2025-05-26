@@ -4,9 +4,9 @@
         <a href="/" class="text-gray font-semibold" id="site-title">spazio eo</a>
     </div>
 
-    <div class="w-64 h-64 ">
+    <!-- <div class="w-64 h-64 ">
         <?php echo get_svg_markup('mappa-eo') ?>
-    </div>
+    </div> -->
 
 
 
