@@ -22,7 +22,7 @@
 
     <header>
         <!-- main nav -->
-        <nav class="flex justify-between items-center max-w-screen w-full bg-gray p-4 fixed top-0" id="main-nav">
+        <nav class="flex justify-between items-center max-w-screen w-full bg-gray p-4 fixed top-0 z-50" id="main-nav">
             <a href="/" class="text-blue font-semibold" id="site-title">spazio eo</a>
             <div class="flex items-center space-x-4">
                 <ul class="hidden sm:flex space-x-4">
