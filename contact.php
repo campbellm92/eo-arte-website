@@ -22,22 +22,26 @@ if (!defined('ABSPATH'))
                 <label for="name" class="mb-1 text-gray">Nome</label>
                 <input type="text" name="name" id="name" placeholder="Inserisci il tuo nome" value=""
                     class="border border-gray text-gray rounded-xs p-1 mb-4 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray">
-                <div id="nameError" style="display: none" class="text-red text-sm mb-2">Inserisci il tuo nome</div>
+                <div id="nameError" style="display: none" class="text-red text-sm mb-2 py-2">Inserisci il tuo nome</div>
 
                 <label for="email" class="mb-1 text-gray">Email</label>
                 <input type="email" name="email" id="email" placeholder="Inserisci il tuo email" value=""
                     class="border border-gray text-gray rounded-xs p-1 mb-4 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray">
-                <div id="emailError" style="display: none" class="text-red text-sm mb-2"></div>
+                <div id="emailError" style="display: none" class="text-red text-sm mb-2 py-2"></div>
 
                 <label for="message" class="mb-1 text-gray">Il tuo messaggio</label>
                 <textarea name="message" id="message" placeholder="Scrivi qualcosa"
                     class="border border-gray text-gray rounded-xs p-1 mb-4 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray"></textarea>
-                <div id="messageError" style="display: none" class="text-red text-sm mb-2"></div>
+                <div id="messageError" style="display: none" class="text-red text-sm mb-2 py-2"></div>
 
-                <button type="submit"
-                    class="inline-block font-extrabold px-3 w-1/2 self-center rounded-xs text-center text-dark-gray bg-gray hover:bg-gray-hover transition-hover duration-500 ease-in-out cursor-pointer">SEND</button>
+                <button type="submit" id="submitBtn"
+                    class="inline-flex items-center justify-center font-extrabold px-3 w-1/2 self-center rounded-xs text-center text-dark-gray bg-gray hover:bg-gray-hover transition-hover duration-500 ease-in-out cursor-pointer">
+                    <span id="submitText">SEND</span>
+                    <span id="loader" style="display: none"></span>
+                </button>
+
                 <?php if (isset($_GET['success']) && $_GET['success'] === 'true'): ?>
-                    <div id="successMessage" style="display: none" class="text-gray text-sm my-2">
+                    <div id="successMessage" style="display: none" class="text-gray text-sm my-2 text-center pt-2">
                         Il tuo messaggio è stato inviato con successo!
                     </div>
                 <?php elseif (isset($_GET['success']) && $_GET['success'] === 'false'): ?>
@@ -59,10 +63,17 @@ if (!defined('ABSPATH'))
     const nameError = document.getElementById("nameError");
     const emailError = document.getElementById("emailError");
     const messageError = document.getElementById("messageError");
-    const successMessage = document.getElementById("successMessage")
+    const successMessage = document.getElementById("successMessage");
+    const submitBtn = document.getElementById("submitBtn");
+    const submitText = document.getElementById("submitText");
+    const loader = document.getElementById("loader");
+
 
     if (successMessage) {
         successMessage.style.display = "block";
+        setTimeout(() => {
+            successMessage.style.display = "none"
+        }, 5000)
     }
 
 
@@ -101,23 +112,24 @@ if (!defined('ABSPATH'))
             successMessage.style.display = "none";
         } else if (!isValidEmail(emailInput.value.trim())) {
             emailError.style.display = "block";
-            emailError.innerText = "L'e-mail inserita non è valida"
+            emailError.innerText = "L'e-mail inserita non è valida";
             hasErrors = true;
             successMessage.style.display = "none";
         };
 
         if (messageInput.value.trim() === "") {
             messageError.style.display = "block";
-            messageError.innerText = "Non hai scritto qualcosa!"
+            messageError.innerText = "Non hai scritto qualcosa!";
             hasErrors = true;
             successMessage.style.display = "none";
         };
 
         if (!hasErrors) {
-            // successMessage.style.display = "block";
-            // successMessage.innerText = "Il messaggio è stato inviato";
-            contactForm.submit();
-        }
+            loader.style.display = "block";
+            submitBtn.disabled = true;
+            submitText.style.display = "none";
+            // contactForm.submit();
+        };
     })
 </script>
 
