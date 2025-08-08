@@ -131,11 +131,23 @@ p {
 /* Gallery section with masonry grid and slide in up animation(?) */
 .masonry-grid {
   column-count: 3;
-  column-gap: 2rem;
+  column-gap: 1rem;
 }
 
 .masonry-grid img {
   width: 100%;
   display: block;
   margin-bottom: 2rem;
+}
+
+.mobile-menu-nav-links a .hover-visible {
+  display: none;
+}
+
+.mobile-menu-nav-links a:hover .hover-hidden {
+  display: none;
+}
+
+.mobile-menu-nav-links a:hover .hover-visible {
+  display: block;
 }
