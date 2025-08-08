@@ -27,8 +27,8 @@
             <div class="flex items-center space-x-4">
                 <ul class="hidden sm:flex space-x-4">
                     <?php
-                    $pages = array("/", "/about", "/eventi", "/workshop", "/contattateci");
-                    $page_names = array("home", "about", "eventi", "workshop", "contattateci");
+                    $pages = array("/about", "/eventi", "/workshop", "/contattateci");
+                    $page_names = array("about", "eventi", "workshop", "contattateci");
                     $style =
                         "text-gray font-semibold bg-blue px-3 rounded-xs hover:text-blue hover:bg-gray hover:outline hover:outline-blue transition duration-600 ease-in-out";
                     foreach ($page_names as $index => $page_name) {
@@ -47,20 +47,57 @@
             <div class="absolute top-full left-0 w-full bg-gray p-6 z-50 hidden" id="mobile-menu">
                 <ul class="flex flex-col space-y-4">
                     <?php
+                    $svg_mapping = array(
+                        "about" => array(
+                            "blue" => get_template_directory_uri() . "/assets/images/menu-items/about-blue.svg",
+                            "red" => get_template_directory_uri() . "/assets/images/menu-items/about-red.svg"
+                        ),
+                        "eventi" => array(
+                            "blue" => get_template_directory_uri() . "/assets/images/menu-items/eventi-blue.svg",
+                            "red" => get_template_directory_uri() . "/assets/images/menu-items/eventi-red.svg"
+                        ),
+                        "workshop" => array(
+                            "blue" => get_template_directory_uri() . "/assets/images/menu-items/workshop-blue.svg",
+                            "red" => get_template_directory_uri() . "/assets/images/menu-items/workshop-red.svg"
+                        ),
+                        "contattateci" => array(
+                            "blue" => get_template_directory_uri() . "/assets/images/menu-items/contattateci-blue.svg",
+                            "red" => get_template_directory_uri() . "/assets/images/menu-items/contattateci-red.svg"
+                        )
+                    );
+
                     foreach ($page_names as $index => $page_name) {
                         $href = $pages[$index];
-
                         $current_page = $_SERVER['REQUEST_URI'];
 
                         $is_current = ($current_page == $href) ||
                             ($href == '/' && $current_page == '/') ||
                             ($href != '/' && strpos($current_page, $href) === 0);
 
-                        // Add active class if this is the current page
-                        $active_class = $is_current ? 'text-red font-bold' : 'text-blue hover:text-red';
+                        // Check if this page has SVGs
+                        if ($page_name != "home" && isset($svg_mapping[$page_name])) {
+                            $blue_svg = $svg_mapping[$page_name]["blue"];
+                            $red_svg = $svg_mapping[$page_name]["red"];
 
-                        echo "<li class='mobile-menu-nav-links'><a href='$href' class='$active_class font-medium text-xl'>$page_name</a></li>";
-                    } ?>
+                            echo "<li class='mobile-menu-nav-links'>";
+                            echo "<a href='$href' class='block'>";
+
+                            // Show red SVG if current page, blue if not
+                            if ($is_current) {
+                                echo "<img src='$red_svg' alt='$page_name' class='h-12 w-auto'>";
+                            } else {
+                                echo "<img src='$blue_svg' alt='$page_name' class='h-12 w-auto hover-hidden'>";
+                                echo "<img src='$red_svg' alt='$page_name' class='h-12 w-auto hover-visible hidden'>";
+                            }
+
+                            echo "</a></li>";
+                        } else {
+                            // Keep text for home or if no SVG available
+                            $active_class = $is_current ? 'text-red font-bold' : 'text-blue hover:text-red';
+                            echo "<li class='mobile-menu-nav-links'><a href='$href' class='$active_class font-medium text-xl'>$page_name</a></li>";
+                        }
+                    }
+                    ?>
                 </ul>
             </div>
 
