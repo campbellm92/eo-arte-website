@@ -23,23 +23,23 @@ $events = new WP_Query($args);
 ?>
 
 
-<main class="bg-blue pt-[5rem]">
+<main class="pt-[9rem]">
 
     <div class="px-5">
         <div class="text-center md:text-left">
-            <h1 class="text-gray mb-5">EVENTI</h1>
+            <h1 class="mb-5">EVENTI</h1>
         </div>
 
         <div class="flex flex-col md:flex-row justify-center md:justify-start gap-2 md:gap-5 mb-10">
-            <?php echo (new Button('ATTUALI E PROSSIMI', '#'))->type('neutral')->variant('outline')->addClass('toggle-upcoming')->render(); ?>
-            <?php echo (new Button('ARCHIVIO', '#'))->type('neutral')->variant('outline')->addClass('toggle-archive')->render(); ?>
+            <?php echo (new Button('ATTUALI E PROSSIMI', '#'))->type('primary')->variant('outline')->addClass('toggle-upcoming')->render(); ?>
+            <?php echo (new Button('ARCHIVIO', '#'))->type('primary')->variant('outline')->addClass('toggle-archive')->render(); ?>
         </div>
 
     </div>
 
 
     <!-- Current and upcoming -->
-    <section class="min-h-screen px-5 bg-blue">
+    <section class="min-h-screen px-5">
         <?php if ($events->have_posts()):
             while ($events->have_posts()):
                 $events->the_post(); ?>
@@ -59,7 +59,7 @@ $events = new WP_Query($args);
                 }
                 ?>
 
-                <div class="<?= $event_type ?> flex flex-col items-center md:flex-row w-full gap-4 lg:h-64 text-gray hover:bg-red cursor-pointer border-b-4"
+                <div class="<?= $event_type ?> flex flex-col items-center md:flex-row w-full gap-4 lg:h-64 hover:bg-red cursor-pointer"
                     onclick="location.href='<?php echo get_permalink(); ?>'">
                     <?php if (has_post_thumbnail()): ?>
                         <div class="rounded-xs w-full md:w-[12.5rem] lg:w-[18.75rem] h-full overflow-hidden shrink-0">

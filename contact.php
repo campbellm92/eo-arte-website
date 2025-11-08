@@ -10,28 +10,27 @@ if (!defined('ABSPATH'))
 
 
 <main>
-    <section
-        class="min-h-screen mt-10 bg-[url(/wp-content/themes/eo-main/assets/images/eo-workshop.webp)] bg-no-repeat bg-center bg-cover lg:bg-fixed flex flex-col justify-center">
+    <section class="min-h-screen mt-10 flex flex-col justify-center">
         <div class="flex justify-center items-center w-full h-screen">
             <form action="/wp-admin/admin-post.php" method="POST" id="contactForm"
-                class="flex flex-col p-4 w-sm h-max bg-blue rounded-xs">
+                class="flex flex-col p-4 w-sm h-max rounded-xs border-2">
                 <input type="hidden" name="action" value="submit_contact_form">
 
-                <p class="text-gray font-semibold mb-2">Send us a message</p>
+                <p class="font-semibold mb-2">Send us a message</p>
 
-                <label for="name" class="mb-1 text-gray">Nome</label>
+                <label for="name" class="mb-1">Nome</label>
                 <input type="text" name="name" id="name" placeholder="Inserisci il tuo nome" value=""
-                    class="border border-gray text-gray rounded-xs p-1 mb-4 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray">
+                    class="border rounded-xs p-1 mb-4 focus:outline-2 focus:outline-red focus:border-red">
                 <div id="nameError" style="display: none" class="text-red text-sm mb-2 py-2">Inserisci il tuo nome</div>
 
-                <label for="email" class="mb-1 text-gray">Email</label>
+                <label for="email" class="mb-1">Email</label>
                 <input type="email" name="email" id="email" placeholder="Inserisci il tuo email" value=""
-                    class="border border-gray text-gray rounded-xs p-1 mb-4 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray">
+                    class="border rounded-xs p-1 mb-4 focus:outline-2 focus:outline-red focus:border-red">
                 <div id="emailError" style="display: none" class="text-red text-sm mb-2 py-2"></div>
 
-                <label for="message" class="mb-1 text-gray">Il tuo messaggio</label>
+                <label for="message" class="mb-1">Il tuo messaggio</label>
                 <textarea name="message" id="message" placeholder="Scrivi qualcosa"
-                    class="border border-gray text-gray rounded-xs p-1 mb-4 focus:outline-2 focus:outline-red focus:border-red placeholder:text-light-gray"></textarea>
+                    class="border rounded-xs p-1 mb-4 focus:outline-2 focus:outline-red focus:border-red"></textarea>
                 <div id="messageError" style="display: none" class="text-red text-sm mb-2 py-2"></div>
 
                 <button type="submit" id="submitBtn"

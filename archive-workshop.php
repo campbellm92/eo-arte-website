@@ -23,11 +23,11 @@ $workshops = new WP_Query($args);
 ?>
 
 
-<main class="bg-blue pt-[5rem]">
+<main class="pt-[9rem]">
     <!-- title and buttons -->
     <div class="px-5">
         <div class="text-center md:text-left">
-            <h1 class="text-gray mb-5">WORKSHOP</h1>
+            <h1 class="mb-5">WORKSHOP</h1>
         </div>
 
         <div class="flex flex-col md:flex-row justify-center md:justify-start gap-2 md:gap-5 mb-10">
@@ -51,8 +51,7 @@ $workshops = new WP_Query($args);
 
                     <div class="cursor-pointer" onclick="location.href='<?php echo get_the_permalink(); ?>'">
                         <!-- Content Container  -->
-                        <div
-                            class="flex flex-col justify-between h-full gap-4 p-6 border-8 border-light-gray hover:bg-red text-gray">
+                        <div class="flex flex-col justify-between h-full gap-4 p-6 border-8 border-light-gray hover:bg-red">
                             <!-- Content -->
                             <h2 class="break-words"><?php the_title(); ?></h2>
                             <p class="text-xl">

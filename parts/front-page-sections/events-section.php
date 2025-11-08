@@ -13,10 +13,10 @@ $events = new WP_Query($args);
 ?>
 
 <section class="min-h-screen">
-    <div class="bg-blue min-h-screen w-full py-10 px-4">
+    <div class="min-h-screen w-full py-10 px-4">
 
         <div class="flex flex-col md:flex-row justify-between text-center md:text-left items-center pb-6">
-            <h1 class="text-gray mb-2">PROSSIMI EVENTI</h1>
+            <h1 class="mb-2">IN EVIDENZA</h1>
             <div class="md:mr-6">
                 <!-- CHANGE URL TO GO TO ALL EVENTS PAGE -->
                 <?php echo (new Button('VEDI TUTTI', home_url('/eventi')))->type('neutral')->variant('outline')->addClass('')->render(); ?>
@@ -36,7 +36,7 @@ $events = new WP_Query($args);
                     $event_date_tba = get_post_meta(get_the_ID(), '_event_date_tba', true);
                     ?>
                     <div
-                        class="flex flex-col flex-shrink-0 w-11/12 sm:w-full md:w-2/3 lg:w-1/2 h-auto md:mr-10 bg-blue border-8 border-gray rounded-xs snap-start">
+                        class="flex flex-col flex-shrink-0 w-11/12 sm:w-full md:w-2/3 lg:w-1/2 h-auto md:mr-10 rounded-xs snap-start">
                         <?php if (has_post_thumbnail()): ?>
                             <div class="flex-shrink-0">
                                 <div class="h-64 md:h-90 overflow-hidden">
@@ -45,8 +45,8 @@ $events = new WP_Query($args);
                             </div>
                         <?php endif ?>
                         <div class="flex flex-col text-center md:text-left flex-grow p-6">
-                            <h2 class="text-gray pb-2"><?php the_title(); ?></h2>
-                            <p class="small-text text-light-gray font-semibold">
+                            <h2 class="pb-2"><?php the_title(); ?></h2>
+                            <p class="small-text font-semibold">
                                 <?php if ($event_date_tba == 1): ?>
                                     Da annunciare
                                 <?php elseif ($event_date_from && $event_date_to): ?>
@@ -57,7 +57,7 @@ $events = new WP_Query($args);
                                 <?php endif; ?>
 
                             </p>
-                            <p class="small-text text-gray font-semibold pb-2">
+                            <p class="small-text font-semibold pb-2">
                                 <?php if ($event_time_from && $event_time_to): ?>
                                     <?php echo esc_html("dalle " . convert_time_format($event_time_from)) . " alle " . esc_html(convert_time_format($event_time_to)); ?>
                                 <?php elseif ($event_time_from):
@@ -71,12 +71,12 @@ $events = new WP_Query($args);
                             <!-- copy and paste above and adjust for time -->
 
 
-                            <div class="text-gray line-clamp-3">
+                            <div class="line-clamp-3">
                                 <!--needs a fix here - atm not making paras  -->
                                 <?php echo (get_the_content()) ?>
                             </div>
                             <div class="mt-auto">
-                                <?php echo (new Button('SCOPRI DI PIÙ', get_permalink()))->type('neutral')->variant('outline')->addClass('mt-4 w-full text-center')->render(); ?>
+                                <?php echo (new Button('SCOPRI DI PIÙ', get_permalink()))->type('primary-solid')->variant('outline')->addClass('mt-4 w-full text-center')->render(); ?>
                             </div>
                         </div>
                     </div>
