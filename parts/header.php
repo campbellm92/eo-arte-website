@@ -22,8 +22,10 @@
 
     <header>
         <!-- main nav -->
-        <nav class="flex justify-between items-center max-w-screen w-full bg-gray p-4 fixed top-0 z-50" id="main-nav">
-            <a href="/" class="text-blue font-semibold" id="site-title">spazio eo</a>
+        <nav class="flex justify-between items-center max-w-screen w-full p-4 fixed top-0 z-50" id="main-nav">
+            <a href="/" class="p-3" id="site-title"><img
+                    src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo-eo-arte.svg"
+                    alt="EO Arte logo" class="w-20"></a>
             <div class="flex items-center space-x-4">
                 <ul class="hidden sm:flex space-x-4">
                     <?php
@@ -44,7 +46,7 @@
                     alt="Spazio EO logo blue" class="sm:hidden w-7 cursor-pointer" id="toggle-icon">
             </div>
             <!-- mobile menu -->
-            <div class="absolute top-full left-0 w-full bg-gray p-6 z-50 hidden" id="mobile-menu">
+            <div class="absolute top-full left-0 w-full p-6 z-50 hidden" id="mobile-menu">
                 <ul class="flex flex-col space-y-4">
                     <?php
                     $svg_mapping = array(
@@ -92,7 +94,6 @@
 
                             echo "</a></li>";
                         } else {
-                            // Keep text for home or if no SVG available
                             $active_class = $is_current ? 'text-red font-bold' : 'text-blue hover:text-red';
                             echo "<li class='mobile-menu-nav-links'><a href='$href' class='$active_class font-medium text-xl'>$page_name</a></li>";
                         }
