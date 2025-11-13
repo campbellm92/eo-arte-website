@@ -78,7 +78,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(205, 23, 25);
+  background-color: white;
   z-index: 9999;
 }
 
