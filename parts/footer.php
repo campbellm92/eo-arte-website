@@ -6,7 +6,7 @@
                 alt="EO Arte logo" class="w-20"></a>
     </div>
 
-    <a href="https://www.mattdev.it/" class="italic mb-6 md:mb-0">Made with ❤️ by Matthew</a>
+    <a href="https://www.mattdev.it/" class="italic mb-6 md:mb-0 text-xs">Made with ❤️ by Matthew</a>
 
 
     <a href="https://www.arcicuneoasti.com/">
