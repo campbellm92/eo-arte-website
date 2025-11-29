@@ -31,8 +31,8 @@ $events = new WP_Query($args);
         </div>
 
         <div class="flex flex-col md:flex-row justify-center md:justify-start gap-2 md:gap-5 mb-10">
-            <?php echo (new Button('ATTUALI E PROSSIMI', '#'))->type('primary')->variant('outline')->addClass('toggle-upcoming')->render(); ?>
-            <?php echo (new Button('ARCHIVIO', '#'))->type('primary')->variant('outline')->addClass('toggle-archive')->render(); ?>
+            <?php echo (new Button('ATTUALI E PROSSIMI', '#'))->type('primary')->variant('solid')->addClass('toggle-upcoming')->render(); ?>
+            <?php echo (new Button('ARCHIVIO', '#'))->type('primary')->variant('solid')->addClass('toggle-archive')->render(); ?>
         </div>
 
     </div>
