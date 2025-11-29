@@ -30,13 +30,13 @@
                 <!-- menu toggle icon -->
                 <div class="w-7 cursor-pointer text-6xl mx-20" id="toggle-icon">...*</div>
             </div>
-            <div class="absolute top-full left-0 w-full p-6 z-50 hidden bg-white h-screen" id="menu">
+            <div class="absolute top-full left-0 w-full p-6 z-50 hidden bg-gray h-screen" id="menu">
                 <ul class="flex flex-col space-y-8">
                     <?php
                     $pages = array("/chisiamo", "/eventi", "/workshop", "/colletivo", "/contattateci");
                     $page_names = array("CHI SIAMO", "EVENTI", "WORKSHOP", "COLLETIVO", "CONTATTATECI");
                     $style =
-                        "text-3xl px-3 hover:text-blue transition duration-600 ease-in-out";
+                        "text-3xl px-3 hover:text-red transition duration-600 ease-in-out";
                     foreach ($page_names as $index => $page_name) {
                         $href = $pages[$index];
                         echo "<li class='nav-links $style'><a href=$href >$page_name</a></li>";
@@ -48,21 +48,3 @@
 
         </nav>
     </header>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const toggleIcon = document.getElementById("toggle-icon");
-            const menu = document.getElementById("menu");
-            const menuNavLinks = document.querySelectorAll(".menu-nav-links");
-
-            function toggleNavMenu() {
-                const menu = document.getElementById("menu");
-                if (menu.classList.contains("hidden")) {
-                    menu.classList.remove("hidden");
-                } else {
-                    menu.classList.add("hidden");
-                }
-            }
-            toggleIcon.addEventListener("click", toggleNavMenu);
-        });
-    </script>
