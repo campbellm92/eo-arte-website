@@ -12,25 +12,25 @@ document.addEventListener("DOMContentLoaded", () => {
     archiveObjects.forEach((element) => {
       element.style.display = "none";
     });
-    showUpcomingButton.classList.remove("bg-inherit", "text-gray");
-    showUpcomingButton.classList.add("bg-gray", "text-dark-gray");
-    showArchiveButton.classList.remove("bg-gray", "text-dark-gray");
-    showArchiveButton.classList.add("bg-inherit", "text-gray");
+    showUpcomingButton.classList.remove("bg-blue");
+    showUpcomingButton.classList.add("bg-red");
+    showArchiveButton.classList.remove("bg-red");
+    showArchiveButton.classList.add("bg-blue");
   };
 
   const showArchive = () => {
     upcomingObjects.forEach((element) => {
       element.style.display = "none";
-      showUpcomingButton.classList.remove("bg-gray", "text-dark-gray");
+      showUpcomingButton.classList.remove("bg-blue");
     });
     archiveObjects.forEach((element) => {
       element.style.display = "flex";
     });
 
-    showArchiveButton.classList.add("bg-gray", "text-dark-gray");
-    showArchiveButton.classList.remove("bg-inherit", "text-gray");
-    showUpcomingButton.classList.remove("bg-gray", "text-dark-gray");
-    showUpcomingButton.classList.add("bg-inherit", "text-gray");
+    showArchiveButton.classList.add("bg-red");
+    showArchiveButton.classList.remove("bg-blue");
+    showUpcomingButton.classList.remove("bg-red");
+    showUpcomingButton.classList.add("bg-blue");
   };
 
   showUpcomingButton.addEventListener("click", (e) => {
