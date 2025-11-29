@@ -39,7 +39,7 @@ class Button
         $styles = [
             // note: btn classname used for clamp styles (easier in pure css)
             // consider creating a width btn instead of using additional classes
-            'primary-solid' => 'btn text-gray font-semibold bg-blue hover:bg-blue-hover transition-hover duration-500 ease-in-out',
+            'primary-solid' => 'btn text-gray font-semibold bg-blue hover:bg-red transition-hover duration-500 ease-in-out',
             'primary-outline' => 'btn text-blue hover:text-gray bg-inherit hover:bg-blue border-8 border-blue transition-hover duration-500 ease-in-out',
             'secondary-solid' => 'btn text-gray bg-red hover:bg-red-hover transition-hover duration-500 ease-in-out',
             'secondary-outline' => 'btn text-red hover:text-gray bg-inherit hover:bg-red border-8 border-red transition-hover duration-500 ease-in-out',
