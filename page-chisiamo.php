@@ -9,8 +9,8 @@ if (!defined('ABSPATH'))
 get_template_part('parts/header');
 ?>
 
-<main class="min-h-screen pt-[9rem]">
-    <section class="p-9 max-w-10/12">
+<main class="min-h-screen w-full md:max-w-10/12 pt-[9rem] text-center md:text-left">
+    <section class="p-9">
         <h1 class="pb-5">chi siamo*</h1>
         <p class="">It's 3am, time to create some chaos commence midnight zoomies yet i
             is
@@ -19,7 +19,7 @@ get_template_part('parts/header');
             signalling the arrival of cat food my water bowl is clean and freshly replenished, so i'll drink from
             the toilet for the dog smells bad so sun bathe, so intrigued by the shower.</p>
     </section>
-    <section class="p-9 max-w-10/12">
+    <section class="p-9">
         <h1 class="pb-5">servizi di eo*</h1>
         <p class="">It's 3am, time to create some chaos commence midnight zoomies yet i
             is
