@@ -27,7 +27,7 @@ $events = new WP_Query($args);
 
     <div class="px-5">
         <div class="text-center md:text-left">
-            <h1 class="mb-5">EVENTI</h1>
+            <h1 class="mb-5">in evidenza</h1>
         </div>
 
         <div class="flex flex-col md:flex-row justify-center md:justify-start gap-2 md:gap-5 mb-10">
@@ -59,7 +59,7 @@ $events = new WP_Query($args);
                 }
                 ?>
 
-                <div class="<?= $event_type ?> flex flex-col items-center md:flex-row w-full gap-4 lg:h-64 hover:bg-red cursor-pointer"
+                <div class="<?= $event_type ?> flex flex-col items-center md:flex-row w-full gap-4 lg:h-64 hover:bg-red hover:text-gray cursor-pointer"
                     onclick="location.href='<?php echo get_permalink(); ?>'">
                     <?php if (has_post_thumbnail()): ?>
                         <div class="rounded-xs w-full md:w-[12.5rem] lg:w-[18.75rem] h-full overflow-hidden shrink-0">
