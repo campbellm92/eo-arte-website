@@ -19,8 +19,8 @@ function register_event_post_type()
         'description' => 'Visualizzare, aggiungere, modificare, eliminare eventi',
         'public' => true,
         'menu_position' => 5,
-        'has_archive' => true,
-        'rewrite' => ['slug' => 'eventi'],
+        'has_archive' => false,
+        'rewrite' => ['slug' => 'in-evidenza/evento'],
         // title > wp default; date + time > custom (not here); short desc > custom; long desc > default ('editor'); featured img > default ('thumbnail'); event link > custom (might not need)
         'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'autosave'], // added excerpt for short desc
         'menu_icon' => 'dashicons-calendar',

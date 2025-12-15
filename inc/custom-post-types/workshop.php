@@ -19,8 +19,8 @@ function register_workshop_post_type()
         'description' => 'Visualizzare, aggiungere, modificare, eliminare workshop',
         'public' => true,
         'menu_position' => 7,
-        'has_archive' => true,
-        'rewrite' => ['slug' => 'workshop'],
+        'has_archive' => false,
+        'rewrite' => ['slug' => 'in-evidenza/workshop'],
         'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'autosave'],
         'menu_icon' => 'dashicons-welcome-learn-more',
         'show_in_rest' => true
