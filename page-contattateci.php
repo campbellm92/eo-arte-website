@@ -52,7 +52,7 @@ if (!defined('ABSPATH'))
             </div>
             <div class="flex flex-col gap-4">
                 <a href="" class="hover:text-red">instagram</a>
-                <a href="">facebook</a>
+                <a href="" class="hover:text-red">facebook</a>
                 <label for="newsletter" class="">newsletter</label>
                 <input type="email" name="newsletter" id="newsletter" placeholder="Inserisci il tuo email" value=""
                     class="border rounded-xs p-1 focus:outline-1 focus:outline-red focus:border-red">
@@ -135,7 +135,7 @@ if (!defined('ABSPATH'))
             loader.style.display = "block";
             submitBtn.disabled = true;
             submitText.style.display = "none";
-            // contactForm.submit();
+            contactForm.submit();
         };
     })
 </script>
