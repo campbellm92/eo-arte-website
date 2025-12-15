@@ -28,7 +28,7 @@
                     alt="EO Arte logo" class="w-20"></a>
             <div class="flex items-center space-x-4">
                 <!-- menu toggle icon -->
-                <div class="w-7 cursor-pointer text-6xl mx-20" id="toggle-icon">...*</div>
+                <div class="w-7 cursor-pointer text-6xl mx-20" id="toggle-icon">...</div>
             </div>
             <div class="absolute top-full left-0 w-full p-6 z-50 hidden bg-gray h-screen" id="menu">
                 <ul class="flex flex-col space-y-8">
