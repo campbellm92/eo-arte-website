@@ -6,3 +6,5 @@ assets/images/
 .env
 
 vendor/
+
+legacy/
