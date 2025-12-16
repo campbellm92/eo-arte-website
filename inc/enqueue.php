@@ -8,11 +8,11 @@ function register_styles()
 
     $version = wp_get_theme()->get('Version');
     wp_enqueue_style('eo-main', get_template_directory_uri() . '/style.css', array(), $version, 'all');
-    wp_enqueue_style('tailwind-styles', get_template_directory_uri() . '/src/output.css', [], '1.0', 'all');
     wp_enqueue_style('loader', get_template_directory_uri() . '/assets/css/loader.css', [], 1.0, 'all');
+    wp_enqueue_style('tailwind-styles', get_template_directory_uri() . '/src/output.css', [], '1.0', 'all');
 
 }
-add_action('wp_enqueue_scripts', 'register_styles');
+add_action('wp_enqueue_scripts', 'register_styles', 20);
 
 function register_scripts()
 {
