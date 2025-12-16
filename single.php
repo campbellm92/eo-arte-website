@@ -6,19 +6,19 @@
             the_post(); ?>
             <!-- hero -->
             <section>
-                <?php get_template_part('parts/in-evidenza-page-sections/hero'); ?>
+                <?php get_template_part('parts/single-event-or-workshop-page-sections/hero'); ?>
             </section>
             <!-- main content -->
             <section class="m-10">
                 <div class="flex flex-col md:flex-row md:gap-8">
 
                     <div class="flex flex-col flex-1">
-                        <?php get_template_part('parts/in-evidenza-page-sections/content'); ?>
+                        <?php get_template_part('parts/single-event-or-workshop-page-sections/content'); ?>
                     </div>
 
                     <?php if (get_post_type() === 'event'): ?>
                         <aside class="md:w-80 shrink-0">
-                            <?php get_template_part('parts/in-evidenza-page-sections/sidebar-event'); ?>
+                            <?php get_template_part('parts/single-event-or-workshop-page-sections/sidebar-event'); ?>
                         </aside>
                     <?php endif; ?>
                 </div>
