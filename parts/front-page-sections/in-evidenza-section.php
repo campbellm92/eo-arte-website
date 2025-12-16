@@ -1,5 +1,4 @@
 <?php
-// Unified Featured Query (Events + Workshops)
 $args = [
     'post_type' => ['event', 'workshop'],
     'posts_per_page' => 3,
