@@ -1,21 +1,29 @@
 <?php get_template_part('parts/header'); ?>
 
-<main>
-    <section class="bg-gray min-h-screen">
-        <?php if (have_posts()):
-            while (have_posts()):
-                the_post(); ?>
-                <!-- import hero section -->
+<main class="bg-gray min-h-screen">
+    <?php if (have_posts()):
+        while (have_posts()):
+            the_post(); ?>
+            <!-- hero -->
+            <section>
                 <?php get_template_part('parts/in-evidenza-page-sections/hero'); ?>
-                <!-- main content -->
-                <div class="flex flex-col md:grid md:grid-cols-12 md:gap-4 min-h-screen m-10">
-                    <?php get_template_part('parts/in-evidenza-page-sections/content'); ?>
+            </section>
+            <!-- main content -->
+            <section class="m-10">
+                <div class="flex flex-col md:flex-row md:gap-8">
+
+                    <div class="flex flex-col flex-1">
+                        <?php get_template_part('parts/in-evidenza-page-sections/content'); ?>
+                    </div>
+
                     <?php if (get_post_type() === 'event'): ?>
-                        <?php get_template_part('parts/in-evidenza-page-sections/sidebar-event'); ?>
+                        <aside class="md:w-80 shrink-0">
+                            <?php get_template_part('parts/in-evidenza-page-sections/sidebar-event'); ?>
+                        </aside>
                     <?php endif; ?>
                 </div>
-            <?php endwhile; endif; ?>
-    </section>
+            </section>
+        <?php endwhile; endif; ?>
 </main>
 
 <?php get_template_part('parts/footer'); ?>
