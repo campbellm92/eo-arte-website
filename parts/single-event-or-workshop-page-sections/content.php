@@ -11,4 +11,5 @@ if (!defined('ABSPATH')) {
     <div class="text-dark-gray pr-4 md:pr-0">
         <?php the_content(); ?>
     </div>
+
 </div>
