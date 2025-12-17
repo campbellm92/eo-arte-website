@@ -1,12 +1,20 @@
-<?php get_template_part('parts/header'); ?>
+<?php get_template_part('parts/header');
+
+$has_thumb = has_post_thumbnail();
+?>
 
 <main class="bg-gray min-h-screen">
     <?php if (have_posts()):
         while (have_posts()):
             the_post(); ?>
             <!-- hero -->
-            <section>
-                <?php get_template_part('parts/single-event-or-workshop-page-sections/hero'); ?>
+            <?php
+            $section_class = !$has_thumb ? 'mt-40' : '';
+            ?>
+            <section class="<?php echo esc_attr($section_class); ?>">
+                <?php if ($has_thumb): ?>
+                    <?php get_template_part('parts/single-event-or-workshop-page-sections/hero'); ?>
+                <?php endif; ?>
             </section>
             <!-- main content -->
             <section class="m-10">
