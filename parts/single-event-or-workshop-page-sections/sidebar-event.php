@@ -5,11 +5,14 @@ if (!defined('ABSPATH')) {
 ?>
 
 <div class="max-h-fit p-4 mt-4 bg-light-gray md:col-span-4 md:col-start-10 md:mt-0 md:mr-4">
-    <p class="text-red font-bold">
-        <?php get_template_part('template-parts/dates/date-event'); ?>
+    <p class="sidebar-date">
+        <?php get_template_part('template-parts/dates-times/date-event'); ?>
+    </p>
+    <p class="sidebar-date">
+        <?php get_template_part('template-parts/dates-times/time-event'); ?>
     </p>
     <div>
-        <p class="small-text font-semibold text-blue">
+        <p class="small-text font-semibold text-blue mt-3">
             EO ARTE<br>
             via XX settembre, 112, ASTI.
         </p>
