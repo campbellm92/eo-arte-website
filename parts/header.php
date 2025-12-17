@@ -33,8 +33,8 @@
             <div class="absolute top-full left-0 w-full p-6 z-50 hidden bg-gray h-screen" id="menu">
                 <ul class="flex flex-col space-y-8">
                     <?php
-                    $pages = array("/chisiamo", "/eventi", "/workshop", "/colletivo", "/contattateci");
-                    $page_names = array("CHI SIAMO", "EVENTI", "WORKSHOP", "COLLETIVO", "CONTATTATECI");
+                    $pages = array("/chisiamo", "/in-evidenza", "/colletivo", "/contattateci");
+                    $page_names = array("CHI SIAMO", "IN EVIDENZA", "COLLETIVO", "CONTATTATECI");
                     $style =
                         "text-3xl px-3 hover:text-red transition duration-600 ease-in-out";
                     foreach ($page_names as $index => $page_name) {
