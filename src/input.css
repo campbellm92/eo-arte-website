@@ -33,7 +33,7 @@ body {
 body {
   font-family: var(--font-albert);
   background-color: var(--color-gray);
-  color: var(--color-black);
+  color: var(--color-dark-gray);
 }
 
 h1 {
@@ -46,6 +46,12 @@ h2 {
   font-size: clamp(1.5rem, 4vw, 2.75rem);
   font-weight: bolder;
   line-height: 1;
+}
+
+h3 {
+  font-size: clamp(1.125rem, 2.5vw, 1.75rem);
+  font-weight: bold;
+  line-height: 1.2;
 }
 
 p {
