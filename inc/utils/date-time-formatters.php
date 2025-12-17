@@ -11,7 +11,7 @@ function convert_date_format($date_string)
 
     $date = new DateTime($date_string);
 
-    $formatter = new IntlDateFormatter('it_IT', IntlDateFormatter::LONG, IntlDateFormatter::NONE, 'Europe/Rome', IntlDateFormatter::GREGORIAN, "EEEE d MMMM");
+    $formatter = new IntlDateFormatter('it_IT', IntlDateFormatter::LONG, IntlDateFormatter::NONE, 'Europe/Rome', IntlDateFormatter::GREGORIAN, "dd/LL");
 
     return $formatter->format($date);
 
