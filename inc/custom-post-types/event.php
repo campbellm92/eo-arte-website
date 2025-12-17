@@ -52,7 +52,19 @@ function event_meta_box_callback($post)
     $time_from = get_post_meta($post->ID, '_event_time_from', true);
     $time_to = get_post_meta($post->ID, '_event_time_to', true);
     $tba = get_post_meta($post->ID, '_event_date_tba', true);
+    $in_evidenza = get_post_meta($post->ID, 'in_evidenza', true);
     ?>
+    <p>
+        <label>
+            <input type="checkbox" name="in_evidenza" value="1" <?php checked($in_evidenza, 1); ?>>
+            <strong>In evidenza</strong>
+        </label>
+    </p>
+    <p>
+        <label for="event_date_tba"><strong>Data da annunciare</strong></label>
+        <input type="checkbox" name="event_date_tba" id="event_date_tba" value="1" <?php checked($tba, '1'); ?>>
+
+    </p>
     <p>
         <label for="event_date_from"><strong>Da (o solo questa data): </strong></label><br>
         <input type="date" name="event_date_from" id="event_date_from" value="<?php echo esc_attr($date_from); ?>"
@@ -72,11 +84,6 @@ function event_meta_box_callback($post)
         <label for="event_time_to"><strong>Ora (fino a)</strong></label><br>
         <input type="time" name="event_time_to" id="event_time_to" value="<?php echo esc_attr($time_to); ?>"
             style="width:100%">
-    </p>
-    <p>
-        <label for="event_date_tba"><strong>Data da annunciare (TBA)(Spunta la casella)</strong></label>
-        <input type="checkbox" name="event_date_tba" id="event_date_tba" value="1" <?php checked($tba, '1'); ?>>
-
     </p>
     <?php
 }
@@ -104,6 +111,12 @@ function event_save_meta_boxes($post_id)
     } else {
         delete_post_meta($post_id, '_event_date_tba');
     }
+
+    update_post_meta(
+        $post_id,
+        'in_evidenza',
+        isset($_POST['in_evidenza']) ? 1 : 0
+    );
 }
 add_action('save_post', 'event_save_meta_boxes');
 // short description should be created manually??

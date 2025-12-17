@@ -56,10 +56,11 @@ function workshop_meta_box_callback($post)
         $selected_days = [];
     }
     $days = ['lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato', 'domenica'];
+    $in_evidenza = get_post_meta($post->ID, 'in_evidenza', true);
     ?>
     <p>
         <input type="checkbox" name="workshop_date_tba" id="workshop_date_tba" value="1" <?php checked($tba, '1'); ?>>
-        <label for="workshop_date_tba"><strong>Data da annunciare (TBA)</strong></label>
+        <label for="workshop_date_tba"><strong>Data da annunciare</strong></label>
     </p>
     <p>
         <label for="workshop_date_from"><strong>Da (o solo): </strong></label><br>
@@ -90,7 +91,14 @@ function workshop_meta_box_callback($post)
             </label>
         <?php endforeach; ?>
         </p>
-        <?php
+    </div>
+    <p>
+        <label>
+            <input type="checkbox" name="in_evidenza" value="1" <?php checked($in_evidenza, 1); ?>>
+            <strong>In evidenza</strong>
+        </label>
+    </p>
+    <?php
 }
 
 function workshop_save_meta_boxes($post_id)
@@ -122,6 +130,12 @@ function workshop_save_meta_boxes($post_id)
     } else {
         delete_post_meta($post_id, '_workshop_days');
     }
+
+    update_post_meta(
+        $post_id,
+        'in_evidenza',
+        isset($_POST['in_evidenza']) ? 1 : 0
+    );
 
 }
 add_action('save_post', 'workshop_save_meta_boxes');
