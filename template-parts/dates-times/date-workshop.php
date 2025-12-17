@@ -1,5 +1,4 @@
 <?php
-// Fetch meta
 $days = get_post_meta(get_the_ID(), '_workshop_days', true);
 $date_from = get_post_meta(get_the_ID(), '_workshop_date_from', true);
 $date_to = get_post_meta(get_the_ID(), '_workshop_date_to', true);
