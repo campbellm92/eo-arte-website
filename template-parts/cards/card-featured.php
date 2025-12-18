@@ -4,10 +4,8 @@ $has_thumb = has_post_thumbnail();
 
 ?>
 
-<div class="relative group flex-shrink-0 w-11/12 sm:w-full md:w-2/3 lg:w-1/2 
-            h-[32rem] md:h-[40rem] rounded-xs overflow-hidden snap-start 
+<div class="relative group flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-2/3 lg:w-1/2 aspect-square rounded-xs overflow-hidden snap-start
             <?php echo $has_thumb ? '' : 'bg-white text-black'; ?>">
-
     <?php if ($has_thumb): ?>
         <?php the_post_thumbnail('large', [
             'class' => 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
