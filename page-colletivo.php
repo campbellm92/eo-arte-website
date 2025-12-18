@@ -10,7 +10,6 @@ $args = [
     'order' => 'ASC'
 ];
 $artists = new WP_Query($args);
-
 ?>
 
 
@@ -20,7 +19,7 @@ get_template_part('parts/header');
 
 <main class="min-h-screen pt-[9rem] text-center md:text-left">
     <section class="p-9 w-full md:max-w-10/12">
-        <h1 class="pb-5">colletivo</h1>
+        <h1 class="pb-5">COLLETTIVO</h1>
         <p class="">It's 3am, time to create some chaos commence midnight zoomies yet i
             is
             not fat, i is fluffy waffles terrorize the hundred-and-twenty-pound rottweiler and steal his bed, not
@@ -29,13 +28,13 @@ get_template_part('parts/header');
             the toilet for the dog smells bad so sun bathe, so intrigued by the shower.</p>
     </section>
     <section class="p-9 w-full">
-        <h1 class="mb-10">artisti di EO</h1>
+        <h1 class="mb-10">ARTISTI DI EO</h1>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             <?php if ($artists->have_posts()):
                 while ($artists->have_posts()):
                     $artists->the_post(); ?>
-
-                    <div class="flex flex-col md:flex-row items-center gap-6">
+                    <a href="<?php the_permalink(); ?>"
+                        class="flex flex-col md:flex-row items-center gap-6 hover:opacity-80 transition">
                         <div class="rounded-full overflow-hidden w-48 h-48 shrink-0">
                             <?php the_post_thumbnail('medium', [
                                 'class' => 'w-full h-full object-cover'
@@ -45,15 +44,11 @@ get_template_part('parts/header');
                             <h3 class="text-xl font-bold"><?php the_title(); ?></h3>
                             <p class="text-sm opacity-70"><?php echo get_the_excerpt(); ?></p>
                         </div>
-                    </div>
-
+                    </a>
                 <?php endwhile; endif;
             wp_reset_postdata(); ?>
-
         </div>
     </section>
-
-
 </main>
 
 
