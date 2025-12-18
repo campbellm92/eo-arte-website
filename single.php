@@ -27,13 +27,11 @@ $has_thumb = has_post_thumbnail();
                 <?php endif; ?>
             </section>
             <!-- main content -->
-            <section class="m-10">
+            <section class="m-5 md:m-10">
                 <div class="flex flex-col md:flex-row md:gap-8">
-
                     <div class="flex flex-col flex-1">
                         <?php get_template_part('parts/single-event-or-workshop-page-sections/content'); ?>
                     </div>
-
                     <aside class="md:w-80 shrink-0">
                         <?php get_template_part('parts/single-event-or-workshop-page-sections/sidebar'); ?>
                     </aside>
