@@ -1,4 +1,14 @@
-<?php get_template_part('parts/header');
+<?php
+/**
+ * Single template for featured content ("In evidenza")
+ * Used by:
+ * - events
+ * - workshops
+ *
+ * Artist profiles have their own template: single-artist.php
+ */
+
+get_template_part('parts/header');
 
 $has_thumb = has_post_thumbnail();
 ?>
@@ -25,7 +35,7 @@ $has_thumb = has_post_thumbnail();
                     </div>
 
                     <aside class="md:w-80 shrink-0">
-                        <?php get_template_part('parts/single-event-or-workshop-page-sections/sidebar-event'); ?>
+                        <?php get_template_part('parts/single-event-or-workshop-page-sections/sidebar'); ?>
                     </aside>
 
                 </div>
