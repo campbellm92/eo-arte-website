@@ -60,10 +60,6 @@ p {
   margin-bottom: 1rem;
 }
 
-.date-info {
-  font-size: clamp(1.5rem, 4vw, 2.75rem);
-}
-
 .small-text {
   font-size: clamp(0.925rem, 1.4vw, 1.1rem);
   line-height: 1.4;
@@ -71,6 +67,17 @@ p {
 
 .btn {
   font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.date-info {
+  font-size: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.sidebar-date {
+  color: var(--color-red);
+  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  margin-bottom: 0;
+  font-weight: 700;
 }
 
 /* loading page/overlay */
