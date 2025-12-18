@@ -28,7 +28,7 @@ get_template_part('parts/header');
             the toilet for the dog smells bad so sun bathe, so intrigued by the shower.</p>
     </section>
     <section class="p-9 w-full">
-        <h1 class="mb-10">ARTISTI DI EO</h1>
+        <h1 class="mb-10">ARTISTƏ DI EO</h1>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             <?php if ($artists->have_posts()):
                 while ($artists->have_posts()):
