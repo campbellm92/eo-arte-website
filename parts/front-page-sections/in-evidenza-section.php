@@ -9,8 +9,8 @@ $args = [
 $featured = new WP_Query($args);
 ?>
 
-<section class="min-h-screen mt-50">
-    <div class="min-h-screen w-full px-4">
+<section class="md:min-h-screen mt-15 md:mt-50">
+    <div class="w-full px-4">
         <div class="flex flex-col md:flex-row justify-between text-center md:text-left items-center pb-6">
             <h1 class="mb-2">IN EVIDENZA</h1>
             <div class="md:mr-6">
@@ -21,7 +21,7 @@ $featured = new WP_Query($args);
             </div>
         </div>
         <div
-            class="flex flex-col md:flex-row items-center md:items-stretch overflow-x-auto space-y-6 md:space-y-0 md:space-x-4 snap-x-4 pb-6 scrollbar-hide">
+            class="flex flex-row gap-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory touch-pan-x overscroll-x-contain pb-4">
             <?php if ($featured->have_posts()):
                 while ($featured->have_posts()):
                     $featured->the_post();
