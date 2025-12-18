@@ -24,11 +24,10 @@ $has_thumb = has_post_thumbnail();
                         <?php get_template_part('parts/single-event-or-workshop-page-sections/content'); ?>
                     </div>
 
-                    <?php if (get_post_type() === 'event'): ?>
-                        <aside class="md:w-80 shrink-0">
-                            <?php get_template_part('parts/single-event-or-workshop-page-sections/sidebar-event'); ?>
-                        </aside>
-                    <?php endif; ?>
+                    <aside class="md:w-80 shrink-0">
+                        <?php get_template_part('parts/single-event-or-workshop-page-sections/sidebar-event'); ?>
+                    </aside>
+
                 </div>
             </section>
         <?php endwhile; endif; ?>
