@@ -19,9 +19,10 @@ if (!defined('ABSPATH')) {
     </div>
     <hr class="text-red mb-4">
     <?php
+    $is_event = is_singular('event');
     // fetch the artist associated with the event
     $artist = get_field('artist');
-    if ($artist):
+    if ($is_event && $artist):
         ?>
         <div>
             <div class="flex flex-col items-center text-center">
