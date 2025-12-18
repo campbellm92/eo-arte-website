@@ -58,6 +58,7 @@ p {
   font-size: clamp(0.95rem, 1.6vw, 1.25rem);
   line-height: 1.6;
   margin-bottom: 1rem;
+  text-align: justify;
 }
 
 .small-text {
@@ -115,11 +116,10 @@ p {
 }
 
 /* css override styles for Gutenberg gallery */
-/* === CLASSIC WORDPRESS GALLERY OVERRIDE === */
 
 .gallery {
   display: grid;
-  align-items: start;
+  align-items: center;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1rem;
 }
@@ -137,7 +137,6 @@ p {
   }
 } */
 
-/* kill WP float layout */
 .gallery-item {
   float: none;
   width: auto;
@@ -145,16 +144,14 @@ p {
   margin: 0;
 }
 
-/* reset DL / DT weirdness */
 .gallery dl,
 .gallery dt {
   margin: 0;
 }
 
-/* image styling */
 .gallery img {
   width: 100%;
-  height: 20rem;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
   border-radius: 0.125rem;
