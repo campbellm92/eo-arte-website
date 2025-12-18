@@ -12,7 +12,7 @@ $featured = new WP_Query($args);
 <section class="min-h-screen mt-50">
     <div class="min-h-screen w-full px-4">
         <div class="flex flex-col md:flex-row justify-between text-center md:text-left items-center pb-6">
-            <h1 class="mb-2">in evidenza</h1>
+            <h1 class="mb-2">IN EVIDENZA</h1>
             <div class="md:mr-6">
                 <?php echo (new Button('VEDI TUTTO', home_url('/in-evidenza')))
                     ->type('primary')
