@@ -24,7 +24,7 @@ if (have_posts()):
 
                     <?php
                     $link_sito = get_field('link_sito');
-                    $pdf_id = get_field('pdf_id');
+                    $pdf_id = get_field('pdf_profilo');
                     $has_both = $link_sito && $pdf_id;
 
                     $link_styles = 'text-blue hover:text-red text-2xl font-semibold tracking-wide';
