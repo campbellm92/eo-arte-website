@@ -1,14 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Albert Sans";
+  src: url("../assets/fonts/AlbertSans-VariableFont_wght.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 /* custom theme config for Tailwind v4  */
 @theme {
   /* fonts */
-  --font-albert: "Albert Sans", sans-serif;
-  --font-jetbrains: "JetBrains Mono", monospace;
+  --font-display: "Albert Sans", sans-serif;
 
   /* colors */
-
   --color-blue: rgb(24, 36, 64);
   --color-blue-hover: rgba(24, 36, 64, 0.9);
   --color-red: rgb(205, 23, 25);
@@ -31,7 +35,7 @@ body {
 }
 
 body {
-  font-family: var(--font-albert);
+  font-family: var(--font-display);
   background-color: var(--color-gray);
   color: var(--color-dark-gray);
 }
