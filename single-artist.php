@@ -9,52 +9,43 @@ if (have_posts()):
     while (have_posts()):
         the_post();
         ?>
-        <!-- <main class="min-h-screen w-full p-9 mt-24">
-            <div class="flex flex-col gap-12">
-                <div class="flex flex-col text-center md:text-left shrink-0">
-                    <div class="rounded-full overflow-hidden w-[20rem] h-[20rem] mb-6">
-                        <?php the_post_thumbnail('medium', [
-                            'class' => 'w-full h-full object-cover'
-                        ]); ?>
-                    </div>
-                </div>
-                <section class="prose max-w-none">
-                    <h3 class="mb-5"><?php the_title(); ?></h3>
-                    <div class="max-w-8/12">
-                        <?php the_content(); ?>
-                    </div>
-                    <h3 class="my-5">Link</h3>
-                    <a href="">Sito portfolio</a>
-                    <br>
-                    <a href="">Scaricare profile (pdf)</a>
-                </section>
-            </div>
-        </main> -->
-
-
-
         <main class="min-h-screen w-full mt-24 flex justify-center">
             <div class="w-full max-w-4xl p-9 flex flex-col gap-12 items-center text-center">
 
-                <!-- IMAGE -->
                 <div class="rounded-full overflow-hidden w-[20rem] h-[20rem]">
                     <?php the_post_thumbnail('medium', [
                         'class' => 'w-full h-full object-cover'
                     ]); ?>
                 </div>
 
-                <!-- CONTENT -->
                 <section class="prose prose-center max-w-none prose-p:text-justify hyphens-auto">
                     <h3 class="mb-5"><?php the_title(); ?></h3>
-
                     <?php the_content(); ?>
 
-                    <h3 class="my-5">Link</h3>
+                    <?php
+                    $link_sito = get_field('link_sito');
+                    $pdf_id = get_field('pdf_id');
+                    $has_both = $link_sito && $pdf_id;
 
-                    <a href="" class="block">Sito portfolio</a>
-                    <a href="" class="block">Scaricare profile (pdf)</a>
+                    $link_styles = 'text-blue hover:text-red text-2xl font-semibold tracking-wide';
+                    $dot_styles = 'text-blue text-2xl font-semibold px-4';
+
+                    if ($link_sito) {
+                        echo '<a href="' . esc_url($link_sito) . '" target="_blank" rel="noopener">
+                        <span class="' . esc_attr($link_styles) . '">PORTFOLIO</span></a>';
+                    }
+
+                    if ($has_both) {
+                        echo '<span class="' . esc_attr($dot_styles) . '">•</span>';
+                    }
+
+                    if ($pdf_id) {
+                        $pdf_url = wp_get_attachment_url($pdf_id);
+                        echo '<a href="' . esc_url($pdf_url) . '" target="_blank" rel="noopener">
+                        <span class="' . esc_attr($link_styles) . '">SCARICA PORTFOLIO (PDF)</span></a>';
+                    }
+                    ?>
                 </section>
-
             </div>
         </main>
 
