@@ -7,8 +7,8 @@ if ($event_date_tba == 1) {
     echo "Da annunciare";
 } elseif ($event_date_from && $event_date_to) {
     echo esc_html(
-        'Dal ' . convert_date_format($event_date_from) .
-        ' al ' . convert_date_format($event_date_to)
+        convert_date_format($event_date_from) .
+        ' → ' . convert_date_format($event_date_to)
     );
 } elseif ($event_date_from) {
     echo esc_html(convert_date_format($event_date_from));
