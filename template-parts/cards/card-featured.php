@@ -22,11 +22,11 @@ $has_thumb = has_post_thumbnail();
         <h2 class="text-2xl font-bold mb-2"><?php the_title(); ?></h2>
         <p class="text-sm font-semibold mb-4">
             <?php
-            $type = get_post_type();
-            if ($type === 'event') {
-                get_template_part('template-parts/dates/date-event');
-            } elseif ($type === 'workshop') {
-                get_template_part('template-parts/dates/date-workshop');
+            $post_type = get_post_type();
+            if ($post_type == 'event') {
+                get_template_part('template-parts/dates-times/date-event');
+            } elseif ($post_type == 'workshop') {
+                get_template_part('template-parts/dates-times/date-workshop');
             }
             ?>
         </p>
