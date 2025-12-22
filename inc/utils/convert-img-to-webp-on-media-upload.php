@@ -33,4 +33,4 @@ function convert_img_to_webp_on_media_upload($upload)
 
     return $upload;
 }
-add_filter('wp_handle_upload', 'handle_upload_convert_to_webp');
+add_filter('wp_handle_upload', 'convert_img_to_webp_on_media_upload');
