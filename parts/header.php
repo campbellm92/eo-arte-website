@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+<title>EO Arte</title>
+<link rel="icon" type="image/x-icon" href="<?php echo get_template_directory_uri(); ?>/assets/images/logo-eo-o.webp">
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +17,7 @@
     <?php if (is_front_page()): ?>
         <div id="loading-screen">
             <video id="loading-video" autoplay muted playsinline>
-                <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/dream.mp4" type="video/mp4">
+                <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/loading-vid.mp4" type="video/mp4">
             </video>
         </div>
     <?php endif; ?>
@@ -28,8 +30,11 @@
                     src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/logo-eo-arte.svg"
                     alt="EO Arte logo" class="w-20"></a>
             <div class="flex items-center space-x-4">
-                <!-- menu toggle icon -->
-                <button class="w-7 cursor-pointer text-5xl mx-10 md:mx-20 text-blue" id="toggle-icon">•••</button>
+                <button id="toggle-icon"
+                    class="inline-flex items-center justify-center text-5xl text-blue px-6 py-4 md:px-10 rounded-md cursor-pointer"
+                    aria-label="Open menu">
+                    •••
+                </button>
             </div>
             <div class="absolute top-full left-0 w-full p-6 z-50 hidden bg-gray h-screen" id="menu">
                 <ul class="flex flex-col space-y-8">
