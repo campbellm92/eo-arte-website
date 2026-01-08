@@ -4,7 +4,7 @@ $has_thumb = has_post_thumbnail();
 
 ?>
 
-<div class="relative group flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-2/3 lg:w-1/2 aspect-square rounded-xs overflow-hidden snap-start
+<div tabindex="0" role="group" class="relative group flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-2/3 lg:w-1/2 aspect-square rounded-xs overflow-hidden snap-start
             <?php echo $has_thumb ? '' : 'bg-white text-black'; ?>">
     <?php if ($has_thumb): ?>
         <?php the_post_thumbnail('large', [
@@ -14,7 +14,7 @@ $has_thumb = has_post_thumbnail();
     <div class="
         absolute inset-0 flex flex-col justify-center items-center p-6 text-center transition-opacity duration-300
         <?php if ($has_thumb): ?>
-            bg-black/60 text-gray opacity-0 group-hover:opacity-100
+            bg-black/60 text-gray opacity-0 group-hover:opacity-100 group-focus-within:opacity-100
         <?php else: ?>
             bg-gray text-dark-gray opacity-100
         <?php endif; ?>
