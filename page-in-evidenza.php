@@ -42,8 +42,8 @@ $featured = new WP_Query($args);
                 ];
                 $label = $labels[$post_type] ?? null;
                 ?>
-                <div class="flex flex-col md:flex-row items-center w-full gap-0 md:gap-4 lg:h-64 md:hover:bg-red md:hover:text-gray cursor-pointer"
-                    onclick="location.href='<?php echo get_permalink(); ?>'">
+                <a href="<?php the_permalink(); ?>"
+                    class="flex flex-col md:flex-row items-center w-full gap-0 md:gap-4 lg:h-64 md:hover:bg-red md:hover:text-gray cursor-pointer">
                     <?php if (has_post_thumbnail()): ?>
                         <div
                             class="w-full h-full md:w-[12.5rem] lg:w-[18.75rem] aspect-square overflow-hidden shrink-0 rounded-b-none rounded-xs">
@@ -86,8 +86,8 @@ $featured = new WP_Query($args);
                             <?php echo wp_strip_all_tags(get_the_excerpt()); ?>
                         </p>
                     </div>
-                </div>
-
+                    </div>
+                </a>
             <?php endwhile; ?>
             <?php wp_reset_postdata(); ?>
         <?php else: ?>
