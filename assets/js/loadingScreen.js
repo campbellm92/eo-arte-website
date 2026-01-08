@@ -23,6 +23,6 @@ window.addEventListener("DOMContentLoaded", function () {
         loadingScreen.style.display = "none";
         document.body.style.overflow = "auto";
       }, 500);
-    }, 7000);
+    }, 3500);
   }
 });
