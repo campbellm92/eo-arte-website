@@ -29,7 +29,7 @@ $sections = [
     [
         'title' => 'Servizi',
         'content' => get_field('servizi'),
-        'align' => 'right',
+        'align' => 'left',
     ],
 
 ];
