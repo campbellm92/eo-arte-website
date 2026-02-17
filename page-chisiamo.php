@@ -12,8 +12,8 @@ $sections = [
         'align' => 'left',
     ],
     [
-        'title' => 'Servizi',
-        'content' => get_field('servizi'),
+        'title' => 'La storia',
+        'content' => get_field('la_storia'),
         'align' => 'right',
     ],
     [
@@ -21,6 +21,17 @@ $sections = [
         'content' => get_field('la_storia_di_eo_baussano'),
         'align' => 'left',
     ],
+    [
+        'title' => 'Cosa facciamo',
+        'content' => get_field('cosa_facciamo'),
+        'align' => 'right',
+    ],
+    [
+        'title' => 'Servizi',
+        'content' => get_field('servizi'),
+        'align' => 'right',
+    ],
+
 ];
 
 get_template_part(
