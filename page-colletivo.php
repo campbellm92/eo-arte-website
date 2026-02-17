@@ -20,12 +20,16 @@ get_template_part('parts/header');
 <main class="min-h-screen pt-[9rem] text-center md:text-left">
     <section class="p-9 w-full md:max-w-10/12">
         <h1 class="pb-5">COLLETTIVO</h1>
-        <p class="">It's 3am, time to create some chaos commence midnight zoomies yet i
-            is
-            not fat, i is fluffy waffles terrorize the hundred-and-twenty-pound rottweiler and steal his bed, not
-            sorry. Claws in the eye of the beholder go crazy with excitement when plates are clanked together
-            signalling the arrival of cat food my water bowl is clean and freshly replenished, so i'll drink from
-            the toilet for the dog smells bad so sun bathe, so intrigued by the shower.</p>
+        <p>Il collettivo di EO ARTE è il motore vivo dello spazio: cura, produce e attiva relazioni intorno
+            all’arte
+            contemporanea. Ogni persona del collettivo mantiene una propria ricerca artistica autonoma, ma
+            sceglie di metterla in dialogo con quella degli altri, sperimentando forme di lavoro condiviso e
+            processuale.</p>
+        <p>Il collettivo progetta mostre, laboratori, eventi e momenti di confronto pubblico, usando lo spazio
+            come laboratorio in cui testare idee, formati espositivi e dispositivi di relazione con chi lo attraversa.
+            Si occupa di riattivare un luogo storico di Asti come presidio culturale, costruendo continuità nel
+            tempo e radicamento nel territorio, senza rinunciare a uno sguardo aperto verso reti artistiche più
+            ampie.</p>
     </section>
     <section class="p-9 w-full">
         <h1 class="mb-10">ARTISTƏ DI EO</h1>
