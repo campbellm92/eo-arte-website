@@ -1,7 +1,6 @@
 *.txt
 .vscode/
 node_modules/
-assets/images/
 
 .env
 
