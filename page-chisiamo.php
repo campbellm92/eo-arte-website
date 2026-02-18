@@ -31,6 +31,11 @@ $sections = [
         'content' => get_field('servizi'),
         'align' => 'left',
     ],
+    [
+        'title' => 'EO ARTE e il circuito ARCI',
+        'content' => get_field('circuito_arci'),
+        'align' => 'right',
+    ],
 
 ];
 
