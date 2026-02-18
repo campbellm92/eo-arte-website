@@ -66,6 +66,7 @@ li {
   text-align: justify;
 }
 
+/* Override Tailwind list styles  */
 @layer base {
   ul,
   ol {

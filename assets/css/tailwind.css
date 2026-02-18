@@ -416,6 +416,9 @@
   .snap-start {
     scroll-snap-align: start;
   }
+  .list-none {
+    list-style-type: none;
+  }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
@@ -610,6 +613,9 @@
   .px-10 {
     padding-inline: calc(var(--spacing) * 10);
   }
+  .px-24 {
+    padding-inline: calc(var(--spacing) * 24);
+  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -642,6 +648,9 @@
   }
   .pb-6 {
     padding-bottom: calc(var(--spacing) * 6);
+  }
+  .pl-0 {
+    padding-left: calc(var(--spacing) * 0);
   }
   .text-center {
     text-align: center;

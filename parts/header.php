@@ -37,18 +37,17 @@
                 </button>
             </div>
             <div class="absolute top-full left-0 w-full p-6 z-50 hidden bg-gray h-screen" id="menu">
-                <ul class="flex flex-col space-y-8">
+                <ul class="flex flex-col space-y-8 list-none pl-0">
                     <?php
                     $pages = array("/chisiamo", "/in-evidenza", "/collettivo", "/sostienici", "/contattaci");
                     $page_names = array("CHI SIAMO", "IN EVIDENZA", "COLLETTIVO", "SOSTIENICI", "CONTATTACI");
                     $style =
-                        "text-3xl px-3 hover:text-red transition duration-600 ease-in-out";
+                        "px-3 hover:text-red transition duration-600 ease-in-out";
                     foreach ($page_names as $index => $page_name) {
                         $href = $pages[$index];
-                        echo "<li class='nav-links $style'><a href=$href >$page_name</a></li>";
+                        echo "<li class='nav-links $style'><a class='text-3xl' href=$href >$page_name</a></li>";
                     }
                     ?>
-
                 </ul>
             </div>
 
