@@ -67,12 +67,21 @@ li {
 }
 
 @layer base {
+  ul,
+  ol {
+    padding-left: 2rem;
+  }
+
   ul {
     list-style-type: disc;
   }
 
   ol {
     list-style-type: decimal;
+  }
+
+  li {
+    margin-bottom: 0;
   }
 }
 
