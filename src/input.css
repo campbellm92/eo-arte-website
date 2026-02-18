@@ -58,8 +58,8 @@ h3 {
   line-height: 1.2;
 }
 
-p,
-li {
+main p,
+main li {
   font-size: clamp(0.95rem, 1.6vw, 1.25rem);
   line-height: 1.6;
   margin-bottom: 1rem;
