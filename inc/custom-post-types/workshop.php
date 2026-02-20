@@ -46,6 +46,8 @@ add_action('add_meta_boxes', 'workshop_add_meta_boxes');
 
 function workshop_meta_box_callback($post)
 {
+    wp_nonce_field('workshop_save_meta', 'workshop_meta_nonce');
+
     $date_from = get_post_meta($post->ID, '_workshop_date_from', true);
     $date_to = get_post_meta($post->ID, '_workshop_date_to', true);
     $time_from = get_post_meta($post->ID, '_workshop_time_from', true);
@@ -56,8 +58,15 @@ function workshop_meta_box_callback($post)
         $selected_days = [];
     }
     $days = ['lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato', 'domenica'];
+    $only_has_graphic = get_post_meta($post->ID, 'only_has_graphic', true);
     $in_evidenza = get_post_meta($post->ID, 'in_evidenza', true);
     ?>
+    <p>
+        <label>
+            <input type="checkbox" name="only_has_graphic" value="1" <?php checked($only_has_graphic, 1); ?>>
+            <strong>Solo grafica</strong>
+        </label>
+    </p>
     <p>
         <input type="checkbox" name="workshop_date_tba" id="workshop_date_tba" value="1" <?php checked($tba, '1'); ?>>
         <label for="workshop_date_tba"><strong>Data da annunciare</strong></label>
@@ -74,7 +83,7 @@ function workshop_meta_box_callback($post)
     </p>
     <p>
         <label for="workshop_time_from"><strong>Ora (da)</strong></label><br>
-        <input type="time" name="workshop_time_from" id="workshop_date_from" value="<?php echo esc_attr($time_from); ?>"
+        <input type="time" name="workshop_time_from" id="workshop_time_from" value="<?php echo esc_attr($time_from); ?>"
             style="width:100%">
     </p>
     <p>
@@ -103,6 +112,37 @@ function workshop_meta_box_callback($post)
 
 function workshop_save_meta_boxes($post_id)
 {
+    if (
+        !isset($_POST['workshop_meta_nonce']) ||
+        !wp_verify_nonce($_POST['workshop_meta_nonce'], 'workshop_save_meta')
+    ) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    if (get_post_type($post_id) !== 'workshop') {
+        return;
+    }
+
+    if (isset($_POST['only_has_graphic'])) {
+        update_post_meta($post_id, 'only_has_graphic', '1');
+    } else {
+        update_post_meta($post_id, 'only_has_graphic', '0');
+    }
+
+    if (isset($_POST['in_evidenza'])) {
+        update_post_meta($post_id, 'in_evidenza', 1);
+    } else {
+        update_post_meta($post_id, 'in_evidenza', 0);
+    }
+
     if (isset($_POST['workshop_date_from'])) {
         update_post_meta($post_id, '_workshop_date_from', sanitize_text_field($_POST['workshop_date_from']));
     }
@@ -124,18 +164,12 @@ function workshop_save_meta_boxes($post_id)
     } else {
         delete_post_meta($post_id, '_workshop_date_tba');
     }
+
     if (isset($_POST['workshop_days']) && is_array($_POST['workshop_days'])) {
         $days = array_map('sanitize_text_field', $_POST['workshop_days']);
         update_post_meta($post_id, '_workshop_days', $days);
     } else {
         delete_post_meta($post_id, '_workshop_days');
     }
-
-    update_post_meta(
-        $post_id,
-        'in_evidenza',
-        isset($_POST['in_evidenza']) ? 1 : 0
-    );
-
 }
 add_action('save_post', 'workshop_save_meta_boxes');

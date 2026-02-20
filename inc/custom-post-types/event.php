@@ -47,13 +47,23 @@ add_action('add_meta_boxes', 'event_add_meta_boxes');
 
 function event_meta_box_callback($post)
 {
+    wp_nonce_field('event_save_meta', 'event_meta_nonce');
+
     $date_from = get_post_meta($post->ID, '_event_date_from', true);
     $date_to = get_post_meta($post->ID, '_event_date_to', true);
     $time_from = get_post_meta($post->ID, '_event_time_from', true);
     $time_to = get_post_meta($post->ID, '_event_time_to', true);
     $tba = get_post_meta($post->ID, '_event_date_tba', true);
+    $only_has_graphic = get_post_meta($post->ID, 'only_has_graphic', true);
     $in_evidenza = get_post_meta($post->ID, 'in_evidenza', true);
     ?>
+    <!-- solo grafica = event only has a graphic for now (might have other content later) -->
+    <p>
+        <label>
+            <input type="checkbox" name="only_has_graphic" value="1" <?php checked($only_has_graphic, 1); ?>>
+            <strong>Solo grafica</strong>
+        </label>
+    </p>
     <p>
         <label>
             <input type="checkbox" name="in_evidenza" value="1" <?php checked($in_evidenza, 1); ?>>
@@ -90,6 +100,37 @@ function event_meta_box_callback($post)
 
 function event_save_meta_boxes($post_id)
 {
+    if (
+        !isset($_POST['event_meta_nonce']) ||
+        !wp_verify_nonce($_POST['event_meta_nonce'], 'event_save_meta')
+    ) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    if (get_post_type($post_id) !== 'event') {
+        return;
+    }
+
+    if (isset($_POST['only_has_graphic'])) {
+        update_post_meta($post_id, 'only_has_graphic', '1');
+    } else {
+        update_post_meta($post_id, 'only_has_graphic', '0');
+    }
+
+    if (isset($_POST['in_evidenza'])) {
+        update_post_meta($post_id, 'in_evidenza', 1);
+    } else {
+        update_post_meta($post_id, 'in_evidenza', 0);
+    }
+
     if (isset($_POST['event_date_from'])) {
         update_post_meta($post_id, '_event_date_from', sanitize_text_field($_POST['event_date_from']));
     }
@@ -112,12 +153,5 @@ function event_save_meta_boxes($post_id)
         delete_post_meta($post_id, '_event_date_tba');
     }
 
-    update_post_meta(
-        $post_id,
-        'in_evidenza',
-        isset($_POST['in_evidenza']) ? 1 : 0
-    );
 }
 add_action('save_post', 'event_save_meta_boxes');
-// short description should be created manually??
-// long descriptions are just accessed via the_content()
