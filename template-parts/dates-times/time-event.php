@@ -12,5 +12,5 @@ if ($event_time_from && !$event_time_to) {
         . " alle "
         . esc_html(convert_time_format($event_time_to));
 } elseif (!$event_date_tba && !$event_time_from) {
-    echo esc_html__('Ore da annunciare');
+    echo esc_html__('');
 }
