@@ -20,8 +20,7 @@ $featured = new WP_Query($args);
                     ->render(); ?>
             </div>
         </div>
-        <div
-            class="flex flex-row gap-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory touch-pan-x overscroll-x-contain pb-4">
+        <div class="flex flex-row gap-4 overflow-x-auto snap-x snap-mandatory overscroll-x-contain pb-4">
             <?php if ($featured->have_posts()):
                 while ($featured->have_posts()):
                     $featured->the_post();

@@ -4,7 +4,7 @@ $has_thumb = has_post_thumbnail();
 
 ?>
 
-<div tabindex="0" role="group" class="relative group flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-2/3 lg:w-1/2 aspect-square rounded-xs overflow-hidden snap-start
+<div class="relative group shrink-0 w-[85vw] sm:w-[70vw] md:w-2/3 lg:w-1/2 aspect-square rounded-xs overflow-hidden snap-start
             <?php echo $has_thumb ? '' : 'bg-white text-black'; ?>">
     <?php if ($has_thumb): ?>
         <?php the_post_thumbnail('large', [
@@ -12,9 +12,9 @@ $has_thumb = has_post_thumbnail();
         ]); ?>
     <?php endif; ?>
     <div class="
-        absolute inset-0 flex flex-col justify-center items-center p-6 text-center transition-opacity duration-300
+        absolute inset-0 flex flex-col justify-center items-center p-6 text-center transition-opacity duration-300 pointer-events-none
         <?php if ($has_thumb): ?>
-            bg-black/60 text-gray opacity-0 group-hover:opacity-100 group-focus-within:opacity-100
+            bg-black/60 text-gray opacity-100 md:opacity-0 md:group-hover:opacity-100 group-focus-within:opacity-100
         <?php else: ?>
             bg-gray text-dark-gray opacity-100
         <?php endif; ?>
@@ -36,7 +36,7 @@ $has_thumb = has_post_thumbnail();
         <?php echo (new Button('SCOPRI DI PIÙ', get_permalink()))
             ->type('primary-solid')
             ->variant('outline')
-            ->addClass('mt-2')
+            ->addClass('mt-2 pointer-events-auto')
             ->render(); ?>
     </div>
 </div>
