@@ -55,7 +55,7 @@ function event_meta_box_callback($post)
     $time_to = get_post_meta($post->ID, '_event_time_to', true);
     $tba = get_post_meta($post->ID, '_event_date_tba', true);
     $only_has_graphic = get_post_meta($post->ID, 'only_has_graphic', true);
-    $in_evidenza = get_post_meta($post->ID, 'in_evidenza', true);
+    // $in_evidenza = get_post_meta($post->ID, 'in_evidenza', true);
     ?>
     <!-- solo grafica = event only has a graphic for now (might have other content later) -->
     <p>
@@ -64,15 +64,21 @@ function event_meta_box_callback($post)
             <strong>Solo grafica</strong>
         </label>
     </p>
+    <?php
+    /*
     <p>
         <label>
             <input type="checkbox" name="in_evidenza" value="1" <?php checked($in_evidenza, 1); ?>>
             <strong>In evidenza</strong>
         </label>
     </p>
+    */
+    ?>
     <p>
-        <label for="event_date_tba"><strong>Data da annunciare</strong></label>
-        <input type="checkbox" name="event_date_tba" id="event_date_tba" value="1" <?php checked($tba, '1'); ?>>
+        <label for="event_date_tba">
+            <input type="checkbox" name="event_date_tba" id="event_date_tba" value="1" <?php checked($tba, '1'); ?>>
+            <strong>Data da annunciare</strong>
+        </label>
 
     </p>
     <p>
@@ -125,11 +131,11 @@ function event_save_meta_boxes($post_id)
         update_post_meta($post_id, 'only_has_graphic', '0');
     }
 
-    if (isset($_POST['in_evidenza'])) {
-        update_post_meta($post_id, 'in_evidenza', 1);
-    } else {
-        update_post_meta($post_id, 'in_evidenza', 0);
-    }
+    // if (isset($_POST['in_evidenza'])) {
+    //     update_post_meta($post_id, 'in_evidenza', 1);
+    // } else {
+    //     update_post_meta($post_id, 'in_evidenza', 0);
+    // }
 
     if (isset($_POST['event_date_from'])) {
         update_post_meta($post_id, '_event_date_from', sanitize_text_field($_POST['event_date_from']));
