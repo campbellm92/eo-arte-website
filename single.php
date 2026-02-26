@@ -24,12 +24,17 @@ get_template_part('parts/header');
             <?php if ($only_has_graphic): ?>
 
                 <!-- render this if 'solo grafica' is selected in the Wordpress admin for this event -->
-                <section class="mx-6 mt-24">
-                    <div class="flex flex-col md:flex-row md:gap-24">
+                <section class="mx-6 mt-36">
+                    <div class="flex flex-col md:flex-row items-center md:items-start md:justify-evenly md:gap-12 xl:gap-2 mx-auto">
                         <?php if ($has_thumb): ?>
-                            <?php the_post_thumbnail('large'); ?>
+                            <?php the_post_thumbnail(
+                                'large',
+                                [
+                                    'class' => 'w-full max-w-md md:max-w-xl lg:max-w-2xl object-contain'
+                                ]
+                            ); ?>
                         <?php endif; ?>
-                        <aside class="md:w-80 shrink-0">
+                        <aside class="w-full h-auto max-w-md md:max-w-sm">
                             <?php get_template_part('parts/single-event-or-workshop-page-sections/sidebar'); ?>
                         </aside>
                     </div>
