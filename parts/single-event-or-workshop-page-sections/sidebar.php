@@ -5,9 +5,10 @@ if (!defined('ABSPATH')) {
 
 $is_event = is_singular('event');
 $is_workshop = is_singular('workshop');
-$artist = get_field('artist');
+$artist = get_field('artista_evento_workshop');
 ?>
 
+<!-- date -->
 <div class="max-h-fit p-4 mt-4 bg-light-gray md:col-span-4 md:col-start-10 md:mt-0 md:mr-4">
     <p class="sidebar-date-time">
         <?php
@@ -18,6 +19,7 @@ $artist = get_field('artist');
         }
         ?>
     </p>
+    <!-- time -->
     <p class="sidebar-date-time">
         <?php
         if ($is_workshop) {
@@ -41,8 +43,9 @@ $artist = get_field('artist');
         </p>
     </div>
     <hr class="text-red mb-4">
+    <!-- artist info -->
     <?php
-    if ($is_event && $artist instanceof WP_Post):
+    if ($is_event && $artist):
         ?>
         <div>
             <div class="flex flex-col items-center text-center">
@@ -57,7 +60,7 @@ $artist = get_field('artist');
                 </div>
             </div>
             <p class="small-text text-center">
-                <?php echo apply_filters('the_content', $artist->post_content); ?>
+                <?php echo apply_filters('the_content', get_post_field('post_content', $artist)); ?>
             </p>
         </div>
     <?php endif; ?>
