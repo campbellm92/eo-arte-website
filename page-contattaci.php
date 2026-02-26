@@ -10,7 +10,7 @@ if (!defined('ABSPATH'))
 <main>
     <section class="min-h-screen w-full mt-10 p-8 flex justify-center items-center">
         <div class="flex flex-row justify-evenly w-full">
-            <div class="">
+            <!-- <div class="">
                 <form action="/wp-admin/admin-post.php" method="POST" id="contactForm"
                     class="flex flex-col p-4 w-sm h-max rounded-xs border-1">
                     <input type="hidden" name="action" value="submit_contact_form">
@@ -49,20 +49,20 @@ if (!defined('ABSPATH'))
                         </div>
                     <?php endif; ?>
                 </form>
-            </div>
+            </div> -->
             <div class="flex flex-col gap-4">
                 <a href="" class="hover:text-red">instagram</a>
                 <a href="" class="hover:text-red">facebook</a>
-                <label for="newsletter" class="">newsletter</label>
+                <!-- <label for="newsletter" class="">newsletter</label>
                 <input type="email" name="newsletter" id="newsletter" placeholder="Inserisci il tuo email" value=""
-                    class="border rounded-xs p-1 focus:outline-1 focus:outline-red focus:border-red">
+                    class="border rounded-xs p-1 focus:outline-1 focus:outline-red focus:border-red"> -->
             </div>
         </div>
     </section>
 </main>
 
 
-<script>
+<!-- <script>
     const contactForm = document.getElementById("contactForm");
     const nameInput = document.getElementById("name");
     const emailInput = document.getElementById("email");
@@ -138,7 +138,7 @@ if (!defined('ABSPATH'))
             contactForm.submit();
         };
     })
-</script>
+</script> -->
 
 
 <?php get_template_part('parts/footer'); ?>
