@@ -45,7 +45,7 @@ $artist = get_field('artista_evento_workshop');
     <hr class="text-red mb-4">
     <!-- artist info -->
     <?php
-    if ($is_event && $artist):
+    if ($is_event || $is_workshop && $artist):
         ?>
         <div>
             <div class="flex flex-col items-center text-center">
