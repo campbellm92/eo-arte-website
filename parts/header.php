@@ -24,6 +24,11 @@
 
     <header>
         <!-- main nav -->
+        <?php if (defined('WP_ENV') && WP_ENV === 'demo'): ?>
+            <div class="flex justify-center w-full bg-amber-950 text-white font-extrabold text-3xl">
+                <p>Demo version only</p>
+            </div>
+        <?php endif; ?>
         <nav class="flex justify-between items-center max-w-screen w-full bg-gray/45 p-4 fixed top-0 z-50"
             id="main-nav">
             <a href="/" class="p-3" id="site-title"><img
@@ -36,6 +41,7 @@
                     •••
                 </button>
             </div>
+
             <div class="absolute top-full left-0 w-full p-6 z-50 hidden bg-gray h-screen" id="menu">
                 <ul class="flex flex-col space-y-8 list-none pl-0">
                     <?php
@@ -52,4 +58,5 @@
             </div>
 
         </nav>
+
     </header>
